@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="emr">
+    <serverData>
+      <paths name="emr">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="application/emr" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>
+

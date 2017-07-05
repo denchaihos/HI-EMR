@@ -1,0 +1,12 @@
+host:localhost
+username:root
+password:123456
+db:fgfg
+host:localhost
+username:root
+password:123456
+db:fgfg
+host:localhost
+username:root
+password:123456
+db:hi

@@ -1,0 +1,171 @@
+
+.vstdate_h {
+    overflow: auto;
+    width: 180px;
+    height: 500px;
+    position : left;
+    cursor: pointer;
+
+}
+#main_content{
+    position: relative;
+    margin-left: 0px;
+    padding: 0px;
+
+}
+
+.content_history {
+    position: absolute;
+    left: 0px;
+    overflow: scroll;
+    height: 500px;
+    min-width:1000px;
+    display: inline-block;
+
+}
+
+#title {
+    font-size: 13px;
+    color: #000;
+    background-color: transparent;
+}
+
+.text_content {
+    font-size: 13px;
+}
+
+#space {
+    margin-left: 50px;
+}
+
+.panel {
+    margin-bottom: 0px;
+}
+.panel-body{
+    padding: 0px;
+}
+#table_h,#mydrugs,#my_cost,#my_lab,#my_ipd_drug,#my_ipd_drughome{
+    font-family: "cordia new", "cordia new";
+    font-size: 16px;
+}
+#mydrugs tr,#my_lab tr,#my_cost tr,#my_ipd_drughome tr,#mydrugs td,#my_lab td,#my_cost td,#my_ipd_drug td,#my_ipd_drughome td{
+    max-height: 25px !important;
+    height: 25px !important;
+    /*display: inline-table;*/
+    padding:0px !important;
+
+}
+
+.main_content{
+    /*height: 100%;*/
+    background: #e3e3e3;
+
+
+}
+
+/* Tab Navigation */
+/*/ tabs/////////////*/
+
+.nav-tabs {
+    margin: 3px;
+    padding: 0;
+    border: 0;
+
+}
+
+.nav-tabs > li > a {
+    height: 30px;
+    margin: 2px;
+    background: #DADADA;
+    font-family: tahoma, geneva, sans-serif;
+    font-size: 12px;
+    color: #000066;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-top-left-radius : 5px;
+    box-shadow : inset 0 - 8 px 7 px - 9 px rgba(0, 0, 0, .4), - 2 px - 2 px 5 px - 2 px rgba(0, 0, 0, .4);
+
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover {
+    background: #F5F5F5;
+    font-family: tahoma, geneva, sans-serif;
+    font-size: 12px;
+    color: #000066;
+    box-shadow : inset 0 0 0 0 rgba(0, 0, 0, .4), - 2 px - 3 px 5 px - 2 px rgba(0, 0, 0, .4);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.nav-tabs>li.active>a:after {
+    border-color: transparent transparent transparent #FAFAFA;
+}
+
+
+/* Tab Content */
+.tab-pane {
+    height: 300px;
+    background: #F5F5F5;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .4);
+    border-radius : 0;
+    text-align : center;
+    padding: 5px;
+    overflow: scroll;
+}
+.tab-content,.tab-pane{
+    text-align: left;
+    font-family: tahoma, geneva, sans-serif;
+    font-size: 14px;
+
+}
+.td_current {
+    background-color: #e38d13;
+}
+
+/*table overflow scroll*/
+#table-wrapper {
+    position:relative;
+}
+#table-scroll {
+    height:200px;
+    overflow:auto;
+    margin-top:20px;
+}
+#table-wrapper table {
+    /*width:100%;*/
+
+}
+#table-wrapper table * {
+    /*background:yellow;*/
+    color:black;
+}
+#table-wrapper table thead th .text {
+    position:absolute;
+    top:-20px;
+    z-index:2;
+    /*height:20px;*/
+    width:auto;
+    background:yellow;
+    /*border:1px solid red;*/
+}
+
+/*  Table  Visit Date  */
+table#table_h{
+    width:100%;
+}
+table#table_h td{
+    white-space: nowrap;  /** added **/
+}
+table#table_h td:last-child{
+    width:100%;
+}
+
+/*****ipd******/
+#ipd_home,#ipd_drug{
+    height: 200px;
+    overflow: scroll;
+}
+.ipt_vstdate{
+    color: red;
+
+}

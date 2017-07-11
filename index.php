@@ -84,11 +84,14 @@ session_start();
                         <li><a href="index.php?vaccation_main">******</a></li>
                     </ul>
                 </li>
-
+                <?php
+                if(isset($_SESSION['fullname'])){
+                ?>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">ตั้งค่าระบบ <span
                             class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
+
                         <li><a href="#" onclick="setConfig();">Database</a></li>
                         <li><a href="index.php?officer">เพิ่มเจ้าหน้าที่</a></li>
 
@@ -96,8 +99,9 @@ session_start();
                         <li><a href="#">Separated link</a></li>
                     </ul>
                 </li>
-
-
+                <?php
+                }
+                ?>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">About Programe <span class="caret"></span></a>
 

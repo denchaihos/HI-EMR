@@ -1,0 +1,3 @@
+<files "db.txt"> 
+deny from all 
+</files>

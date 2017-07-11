@@ -37,7 +37,7 @@ $data .="<span id='space'></span>";
 $data .="<span class='label label-default' id='title'>วันเดือนปีเกิด&nbsp</span>";
 $data .="<span class='text_content'>". DateThai($obj->brthdate) . "  &nbsp&nbsp</span>";
 $data .="<span class='label label-default' id='title'>อายุ&nbsp</span>";
-$data .="<span class='text_content'>". timespan($obj->brthdate, $today) . "  &nbsp&nbsp</span>";
+$data .="<span class='text_content'>". timespan(strtotime($obj->brthdate), $today) . "  &nbsp&nbsp</span>";
 $data .="<span class='label label-default' id='title'>เลขที่บัตรประชาชน&nbsp</span>";
 $data .="<span class='text_content'>". $obj->pop_id . "  &nbsp&nbsp</span>";
 $data .="<span class='label label-default' id='title'>ชื่อมารดา&nbsp</span>";

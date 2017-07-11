@@ -19,10 +19,13 @@ ob_start();
 <body>
 <?php
 include 'connect.php';
+include 'crc16.php';
 
-
-$strSQL = "SELECT * FROM dct WHERE dct = '".$_POST['username']."'";
-//$strSQL = "SELECT * FROM dct WHERE dct = '".$_POST['username']."' and password = '".$_POST['password']."'";
+echo crc16($_POST['password']);
+$psswrd = crc16($_POST['password']);
+//$strSQL = "SELECT * FROM dct WHERE dct = '".$_POST['username']."'";
+//$strSQL = "SELECT * FROM dct WHERE dct = '".$_POST['username']."' and pssword = crc16('".$_POST['password']."')";
+$strSQL = "SELECT * FROM dct WHERE dct = '".$_POST['username']."' and psswrd = '$psswrd'";
 $objQuery = mysql_query($strSQL);
 
 $objResult = mysql_fetch_array($objQuery, MYSQL_ASSOC);

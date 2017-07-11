@@ -164,8 +164,9 @@ session_start();
 
 <div class="row">
         <?php
+        date_default_timezone_set("Asia/Bangkok");
 
-        if(!isset($_SESSION['fullname'])){
+        if(!isset($_SESSION["fullname"])){
             echo "<div class='container'><img src='images/emr.jpg'></div>";
             //exit(0);
         }else{

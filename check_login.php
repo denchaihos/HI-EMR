@@ -21,7 +21,7 @@ ob_start();
 include 'connect.php';
 include 'crc16.php';
 
-echo crc16($_POST['password']);
+//echo crc16($_POST['password']);
 $psswrd = crc16($_POST['password']);
 //$strSQL = "SELECT * FROM dct WHERE dct = '".$_POST['username']."'";
 //$strSQL = "SELECT * FROM dct WHERE dct = '".$_POST['username']."' and pssword = crc16('".$_POST['password']."')";

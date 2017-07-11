@@ -22,7 +22,7 @@ include 'readConfig.php';
         <div class="form-group row">
             <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Password</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control " id="lgFormGroupInput" name="password" value="<?php echo $config['password'] ?>">
+                <input type="password" class="form-control " id="lgFormGroupInput" name="password" value="<?php echo $config['password'] ?>">
             </div>
         </div>
         <div class="form-group row">

@@ -14,6 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link href="css/myCss/pt_history_form.css" rel="stylesheet">
+    <link href="css/myCss/emergency.css" rel="stylesheet">
 
 
 </head>
@@ -107,7 +108,7 @@
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a href="#er" role="tab" data-toggle="tab" onclick="getErData()">
+                                                    <a href="#er" role="tab" data-toggle="tab" onclick="getErProcedure();getErData();">
                                                         <i class="fa fa-heartbeat"></i> การรักษาด้านฉุกเฉิน
                                                     </a>
                                                 </li>
@@ -212,7 +213,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="er">
-                                                    <h5>ห้องฉุกเฉิน</h5>
+
+                                                    <div id="er_procedure"></div>
                                                     <div id="er_result">
 
                                                     </div>

@@ -44,11 +44,11 @@
 .panel-body{
     padding: 0px;
 }
-#table_h,#mydrugs,#my_cost,#my_lab,#my_ipd_drug,#my_ipd_drughome{
+#table_h,#mydrugs,#my_cost,#my_lab,#my_ipd_drug,#my_ipd_drughome,#my_procedure{
     font-family: "cordia new", "cordia new";
     font-size: 16px;
 }
-#mydrugs tr,#my_lab tr,#my_cost tr,#my_ipd_drughome tr,#mydrugs td,#my_lab td,#my_cost td,#my_ipd_drug td,#my_ipd_drughome td{
+#mydrugs tr,#my_lab tr,#my_cost tr,#my_ipd_drughome tr,#mydrugs td,#my_lab td,#my_cost td,#my_ipd_drug td,#my_ipd_drughome td,#my_procedure td{
     max-height: 25px !important;
     height: 25px !important;
     /*display: inline-table;*/

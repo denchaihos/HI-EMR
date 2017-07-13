@@ -170,7 +170,7 @@ function getLab(){
 }
 function getDrugOpd(){
     var vn = $('input#vn_currentt').val();
-    alert(vn);
+
     $('tbody#my_drugs tr').remove();
     $.getJSON('get_drug_opd_data.php',{vn:vn}, function(data) {
         $x = 1;
@@ -256,10 +256,19 @@ function getDrugIpd(){
 /******************ER*******************/
 function getErData(){
     var vn = $('input#vn_currentt').val();
-    alert(vn);
+
     $('div#er_result').empty();
     $.get('get_emergency_data.php',{vn:vn}, function(data) {
         $("#er_result").html(data);
+    });
+
+}
+function getErProcedure(){
+    var vn = $('input#vn_currentt').val();
+alert(vn);
+    $('div#er_procedure').empty();
+    $.get('get_procedure_data.php',{vn:vn}, function(data) {
+        $("#er_procedure").html(data);
     });
 
 }

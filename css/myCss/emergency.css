@@ -1,0 +1,17 @@
+ul.emergency{
+    border: 1px solid;
+    border-radius: 5px;
+    width: 80%;
+}
+ul>li.emergency{
+    font-size: 13px;
+    font-family: "MS Sans Serif", "Times New Roman", Tahoma;
+}
+
+ul>li>span.emergencyLabel{
+    background: #dcdcdc;
+    border-bottom: 1px solid;
+    width: 250px;
+    display:inline-block;
+}
+

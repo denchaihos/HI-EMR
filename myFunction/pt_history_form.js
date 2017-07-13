@@ -170,7 +170,7 @@ function getLab(){
 }
 function getDrugOpd(){
     var vn = $('input#vn_currentt').val();
-   // alert(vn);
+    alert(vn);
     $('tbody#my_drugs tr').remove();
     $.getJSON('get_drug_opd_data.php',{vn:vn}, function(data) {
         $x = 1;
@@ -201,6 +201,7 @@ function getXray(){
 
 function getCost(){
     var vn = $('input#vn_currentt').val();
+
     $('div#cost_result').empty();
     $.get('get_cost_data.php',{vn:vn}, function(data) {
         $("#cost_result").html(data);
@@ -251,6 +252,16 @@ function getDrugIpd(){
     $.get('get_drug_ipd_data.php',{an:an}, function(data) {
         $("div#ipd_drugs").html(data);
     });
+}
+/******************ER*******************/
+function getErData(){
+    var vn = $('input#vn_currentt').val();
+    alert(vn);
+    $('div#er_result').empty();
+    $.get('get_emergency_data.php',{vn:vn}, function(data) {
+        $("#er_result").html(data);
+    });
+
 }
 
 //create alert  dialog  myAlert name global

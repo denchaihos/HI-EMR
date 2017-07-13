@@ -107,7 +107,7 @@
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a href="#er" role="tab" data-toggle="tab" onclick="getDrug()">
+                                                    <a href="#er" role="tab" data-toggle="tab" onclick="getErData()">
                                                         <i class="fa fa-heartbeat"></i> การรักษาด้านฉุกเฉิน
                                                     </a>
                                                 </li>

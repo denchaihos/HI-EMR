@@ -9,7 +9,5 @@ function crc16($data)
         $crc = (($crc << 8) ^ ($x << 12) ^ ($x << 5) ^ $x) & 0xFFFF;
     }
     return $crc;
-}
 
-echo crc16("123");
-?>
+}

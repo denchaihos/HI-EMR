@@ -43,9 +43,9 @@
                     <button type="button" class="btn btn-default" onclick="getVstdate();getPtInform();">ตกลง</button>
 
 
-                        <span> วันที่  <input type="hidden" name="vstdate_fromclick" id="vstdate_fromclick" value=""/></span>
-                        <span id="dateshow"></span>
-                    <input type="button" onclick="printDiv('printableArea')" value="print Send TestLab!" />
+                        <span style="display: none"> วันที่  <input type="hidden" name="vstdate_fromclick" id="vstdate_fromclick" value=""/></span>
+                        <span style="display: none" id="dateshow"></span>
+                    <input type="button" style="display: none" onclick="printDiv('printableArea')" value="print Send TestLab!" />
 
                 </form>
 
@@ -113,7 +113,7 @@
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a href="#dental" role="tab" data-toggle="tab" onclick="getDrug()">
+                                                    <a href="#dental" role="tab" data-toggle="tab" onclick="getdentalData()">
                                                         <i class="fa fa-paw"></i> ทันตกรรม
                                                     </a>
                                                 </li>
@@ -220,7 +220,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="dental">
-                                                    <h5>การรักษาทางทันตกรรม</h5>
+
                                                     <div id="dental_result">
 
                                                     </div>

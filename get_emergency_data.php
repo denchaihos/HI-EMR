@@ -111,7 +111,7 @@ $data .="<ul class='emergency'>";
 while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
 
     $data .= "<li class='emergency'><span class='emergencyLabel'>วันที่เกิดเหตุ</span><span>".DateThai($row['sickdate'])."</span></li>";
-    $data .= "<li class='emergency'><span class='emergencyLabel'>วันที่เกิดเหตุ</span><span>".DateThai($row['sickdate'])."</span></li>";
+    $data .= "<li class='emergency'><span class='emergencyLabel'>เวลาเกิดเหตุ</span><span>".$row['sicktime']."</span></li>";
     $data .= "<li class='emergency'><span class='emergencyLabel'>ประเภทอุบัติเหตุ</span><span>".$row['aetype_desc_th']."</span></li>";
     $data .= "<li class='emergency'><span class='emergencyLabel'>สถานที่เกิดอุบัติเหตุ</span><span>".$row['nameaeplace']."</span></li>";
     $data .= "<li class='emergency'><span class='emergencyLabel'>วิธีการนำสั่งตัว</span><span>".$row['nametypein']."</span></li>";

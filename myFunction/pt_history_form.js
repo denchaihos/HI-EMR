@@ -265,13 +265,26 @@ function getErData(){
 }
 function getErProcedure(){
     var vn = $('input#vn_currentt').val();
-alert(vn);
+
     $('div#er_procedure').empty();
     $.get('get_procedure_data.php',{vn:vn}, function(data) {
         $("#er_procedure").html(data);
     });
 
 }
+/******************dental*******************/
+function getdentalData(){
+    var vn = $('input#vn_currentt').val();
+
+    $('div#dental_result').empty();
+    $.get('get_dental_data.php',{vn:vn}, function(data) {
+        $("#dental_result").html(data);
+    });
+
+}
+
+
+
 
 //create alert  dialog  myAlert name global
 alertify.myAlert || alertify.dialog('myAlert',function factory(){

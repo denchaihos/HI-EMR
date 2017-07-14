@@ -50,7 +50,7 @@
 }
 #mydrugs tr,#my_lab tr,#my_cost tr,#my_ipd_drughome tr,#mydrugs td,#my_lab td,#my_cost td,#my_ipd_drug td,#my_ipd_drughome td,#my_procedure td{
     max-height: 25px !important;
-    height: 25px !important;
+    height: 22px !important;
     /*display: inline-table;*/
     padding:0px !important;
 

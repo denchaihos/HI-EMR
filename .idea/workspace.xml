@@ -23,22 +23,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="get_emergency_data.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/get_emergency_data.php">
+      <file leaf-file-name="get_pt_information.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/get_pt_information.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="0" selection-start="343" selection-end="343" vertical-scroll-proportion="-11.96" vertical-offset="0" max-vertical-offset="3358">
-              <folding>
-                <marker date="1499941011750" expanded="true" signature="440:2967" placeholder="SELECT e.sic..emergency..." />
-              </folding>
+            <state line="75" column="15" selection-start="3563" selection-end="3563" vertical-scroll-proportion="-26.96" vertical-offset="601" max-vertical-offset="1649">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="get_pt_information.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/get_pt_information.php">
+      <file leaf-file-name="get_dental_data.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/get_dental_data.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="0" selection-start="199" selection-end="235" vertical-scroll-proportion="8.48" vertical-offset="365" max-vertical-offset="1649">
-              <folding />
+            <state line="56" column="24" selection-start="2040" selection-end="2040" vertical-scroll-proportion="0.70734596" vertical-offset="467" max-vertical-offset="1425">
+              <folding>
+                <marker date="1500003379614" expanded="true" signature="488:720" placeholder="SELECT dg.na..dt..." />
+                <marker date="1500003379614" expanded="true" signature="1368:1375" placeholder="SELECT dg.na..dt..." />
+                <marker date="1500003379614" expanded="true" signature="1368:1572" placeholder="SELECT a.nam..dt..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -46,17 +48,12 @@
       <file leaf-file-name="pt_history_form.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pt_history_form.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="198" column="93" selection-start="12108" selection-end="12131" vertical-scroll-proportion="-19.04" vertical-offset="2805" max-vertical-offset="5525">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="emergency.css" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/css/myCss/emergency.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="1" selection-start="308" selection-end="308" vertical-scroll-proportion="0.29276693" vertical-offset="0" max-vertical-offset="871">
-              <folding />
+            <state line="222" column="0" selection-start="13726" selection-end="13726" vertical-scroll-proportion="-12.92" vertical-offset="3366" max-vertical-offset="5525">
+              <folding>
+                <element signature="n#style#0;n#span#0;n#form#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#1;n#form#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#form#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -64,28 +61,7 @@
       <file leaf-file-name="pt_history_form.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myFunction/pt_history_form.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="173" column="20" selection-start="5517" selection-end="5521" vertical-scroll-proportion="-11.08" vertical-offset="3702" max-vertical-offset="7199">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="get_procedure_data.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/get_procedure_data.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="34" selection-start="788" selection-end="788" vertical-scroll-proportion="-15.64" vertical-offset="207" max-vertical-offset="1173">
-              <folding>
-                <marker date="1499941648198" expanded="true" signature="440:539" placeholder="select o.icd..oprt..." />
-                <marker date="1499941648198" expanded="true" signature="715:958" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="get_drug_opd_data.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/get_drug_opd_data.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="46" selection-start="909" selection-end="909" vertical-scroll-proportion="-18.36" vertical-offset="0" max-vertical-offset="697">
+            <state line="279" column="42" selection-start="8285" selection-end="8285" vertical-scroll-proportion="-14.52" vertical-offset="6054" max-vertical-offset="7498">
               <folding />
             </state>
           </provider>
@@ -94,8 +70,19 @@
       <file leaf-file-name="pt_history_form.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/myCss/pt_history_form.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="78" selection-start="645" selection-end="657" vertical-scroll-proportion="-20.48" vertical-offset="500" max-vertical-offset="3894">
+            <state line="53" column="30" selection-start="963" selection-end="963" vertical-scroll-proportion="0.0" vertical-offset="578" max-vertical-offset="3009">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="get_procedure_data.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/get_procedure_data.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="0" selection-start="557" selection-end="1128" vertical-scroll-proportion="-13.6" vertical-offset="0" max-vertical-offset="867">
+              <folding>
+                <marker date="1499941648198" expanded="true" signature="440:539" placeholder="select o.icd..oprt..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -145,12 +132,13 @@
         <option value="$PROJECT_DIR$/accident_ArrayData.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/get_pt_information.php" />
+        <option value="$PROJECT_DIR$/get_procedure_data.php" />
+        <option value="$PROJECT_DIR$/css/myCss/emergency.css" />
+        <option value="$PROJECT_DIR$/css/myCss/pt_history_form.css" />
         <option value="$PROJECT_DIR$/get_emergency_data.php" />
         <option value="$PROJECT_DIR$/myFunction/pt_history_form.js" />
         <option value="$PROJECT_DIR$/pt_history_form.php" />
-        <option value="$PROJECT_DIR$/css/myCss/pt_history_form.css" />
-        <option value="$PROJECT_DIR$/get_procedure_data.php" />
-        <option value="$PROJECT_DIR$/css/myCss/emergency.css" />
+        <option value="$PROJECT_DIR$/get_dental_data.php" />
       </list>
     </option>
   </component>
@@ -342,7 +330,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2014652" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16483517" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -350,11 +338,11 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -382,11 +370,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/myFunction/pt_history_form.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="46" selection-start="1221" selection-end="1221" vertical-scroll-proportion="0.0" vertical-offset="595" max-vertical-offset="2737" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/get_pt_information.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="49" column="14" selection-start="2335" selection-end="2335" vertical-scroll-proportion="0.0" vertical-offset="833" max-vertical-offset="1292" />
@@ -578,99 +561,103 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/crc16.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="300" selection-end="300" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="323">
-          <folding />
-        </state>
+        <state line="13" column="0" selection-start="300" selection-end="300" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="323" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/accident_ArrayData.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="22" selection-start="932" selection-end="932" vertical-scroll-proportion="-22.32" vertical-offset="618" max-vertical-offset="1584">
-          <folding />
-        </state>
+        <state line="49" column="22" selection-start="932" selection-end="932" vertical-scroll-proportion="-22.32" vertical-offset="618" max-vertical-offset="1584" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/get_appointment_data.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="11" selection-start="820" selection-end="820" vertical-scroll-proportion="-20.4" vertical-offset="0" max-vertical-offset="680">
-          <folding>
-            <marker date="1499242029932" expanded="true" signature="-1:-1" placeholder="SELECT o.fud..oapp..." />
-          </folding>
-        </state>
+        <state line="30" column="11" selection-start="820" selection-end="820" vertical-scroll-proportion="-20.4" vertical-offset="0" max-vertical-offset="680" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/connect.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="22" selection-start="54" selection-end="54" vertical-scroll-proportion="-1.36" vertical-offset="0" max-vertical-offset="425">
+        <state line="2" column="22" selection-start="54" selection-end="54" vertical-scroll-proportion="-1.36" vertical-offset="0" max-vertical-offset="425" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/get_drug_opd_data.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="46" selection-start="909" selection-end="909" vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="697">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/myCss/emergency.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="1" selection-start="78" selection-end="78" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="98" column="21" selection-start="4381" selection-end="4381" vertical-scroll-proportion="-66.64" vertical-offset="0" max-vertical-offset="3349">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/get_emergency_data.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="343" selection-end="343" vertical-scroll-proportion="-11.96" vertical-offset="0" max-vertical-offset="3358">
-          <folding>
-            <marker date="1499941011750" expanded="true" signature="440:2967" placeholder="SELECT e.sic..emergency..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/get_pt_information.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="199" selection-end="235" vertical-scroll-proportion="8.48" vertical-offset="365" max-vertical-offset="1649">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/get_drug_opd_data.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="46" selection-start="909" selection-end="909" vertical-scroll-proportion="-18.36" vertical-offset="0" max-vertical-offset="697">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pt_history_form.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="198" column="93" selection-start="12108" selection-end="12131" vertical-scroll-proportion="-19.04" vertical-offset="2805" max-vertical-offset="5525">
+        <state line="98" column="21" selection-start="4381" selection-end="4381" vertical-scroll-proportion="-0.04028436" vertical-offset="1700" max-vertical-offset="3349">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/myCss/pt_history_form.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="78" selection-start="645" selection-end="657" vertical-scroll-proportion="-20.48" vertical-offset="500" max-vertical-offset="3894">
+        <state line="53" column="30" selection-start="963" selection-end="963" vertical-scroll-proportion="0.0" vertical-offset="578" max-vertical-offset="3009">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/myFunction/pt_history_form.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="173" column="20" selection-start="5517" selection-end="5521" vertical-scroll-proportion="-11.08" vertical-offset="3702" max-vertical-offset="7199">
+        <state line="279" column="42" selection-start="8285" selection-end="8285" vertical-scroll-proportion="-14.52" vertical-offset="6054" max-vertical-offset="7498">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pt_history_form.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="222" column="0" selection-start="13726" selection-end="13726" vertical-scroll-proportion="-12.92" vertical-offset="3366" max-vertical-offset="5525">
+          <folding>
+            <element signature="n#style#0;n#span#0;n#form#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#form#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#form#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/get_emergency_data.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="106" column="0" selection-start="2998" selection-end="3032" vertical-scroll-proportion="0.556872" vertical-offset="1332" max-vertical-offset="2482">
+          <folding>
+            <marker date="1499995746359" expanded="true" signature="-1:-1" placeholder="SELECT e.sic..emergency..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/get_pt_information.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="15" selection-start="3563" selection-end="3563" vertical-scroll-proportion="-26.96" vertical-offset="601" max-vertical-offset="1649">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/get_procedure_data.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="34" selection-start="788" selection-end="788" vertical-scroll-proportion="-15.64" vertical-offset="207" max-vertical-offset="1173">
+        <state line="20" column="0" selection-start="557" selection-end="1128" vertical-scroll-proportion="-13.6" vertical-offset="0" max-vertical-offset="867">
           <folding>
             <marker date="1499941648198" expanded="true" signature="440:539" placeholder="select o.icd..oprt..." />
-            <marker date="1499941648198" expanded="true" signature="715:958" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/myCss/emergency.css">
+    <entry file="file://$PROJECT_DIR$/get_dental_data.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="1" selection-start="308" selection-end="308" vertical-scroll-proportion="0.29276693" vertical-offset="0" max-vertical-offset="871">
-          <folding />
+        <state line="56" column="24" selection-start="2040" selection-end="2040" vertical-scroll-proportion="0.70734596" vertical-offset="467" max-vertical-offset="1425">
+          <folding>
+            <marker date="1500003379614" expanded="true" signature="488:720" placeholder="SELECT dg.na..dt..." />
+            <marker date="1500003379614" expanded="true" signature="1368:1375" placeholder="SELECT dg.na..dt..." />
+            <marker date="1500003379614" expanded="true" signature="1368:1572" placeholder="SELECT a.nam..dt..." />
+          </folding>
         </state>
       </provider>
     </entry>

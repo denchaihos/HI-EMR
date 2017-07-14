@@ -117,6 +117,7 @@ $('body').on('click', 'td#vstdate', function(){
     $('input#vstdate_fromclick').val(history_vstdate);
     getLabTest();
     getAppointment();
+    createBadges();
 
 
 
@@ -129,6 +130,25 @@ function getPtInform(){
     });
 }
 
+function createBadges(){
+    var vn = $('input#vn_currentt').val();
+    $('span.badge').text('');
+    $.getJSON('badges.php',{vn:vn}, function(data) {
+
+        $.each(data, function(key,value){
+            $('span#inform_badge').text(value.inform);
+            $('span#doctor_badge').text(value.doctor);
+            $('span#drug_badge').text(value.drug);
+            $('span#emergency_badge').text(value.emergency);
+            $('span#dental_badge').text(value.dental);
+            $('span#ipd_badge').text(value.ipd);
+            $('span#lab_badge').text(value.lab);
+            $('span#xray_badge').text(value.xray);
+            $('span#cost_badge').text(value.cost);
+
+        });
+    });
+}
 function getLab(){
     var vn = $('input#vn_currentt').val();
     //alert(vn);
@@ -256,7 +276,7 @@ function getDrugIpd(){
 /******************ER*******************/
 function getErData(){
     var vn = $('input#vn_currentt').val();
-
+//alert(vn);
     $('div#er_result').empty();
     $.get('get_emergency_data.php',{vn:vn}, function(data) {
         $("#er_result").html(data);

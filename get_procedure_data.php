@@ -15,30 +15,32 @@ $vn = $_GET['vn'];
 //$vn = 923329;
 include "myFunction/myFunction.php";
 $data = array();
+$data = "";
 $sql = "select o.icd9cm,o.icd9name,o.charge,d.fname from oprt o JOIN dct d on d.lcno=o.dct where o.vn='$vn' ";
 
 //e.vn='$vn'
 $result = mysql_query($sql, $con);
 
-$data = "<h5>หัตถการ</h5>";
-$data .="<ul class='emergency'>";
-$data .= "<table class='table table-hover' id='my_procedure'>";
-$data .="<thead class='mythead'>";
-$data .= "<tr></tr><th>icd9</th>";
-$data .= "<th>ชื่อหัตถการ</th>";
-$data .= "<th>ราคา</th>";
-$data .= "<th>ผู้ทำ</th></tr></thead>";
-while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+    $data .= "<h5>หัตถการ</h5>";
+    $data .="<ul class='emergency'>";
+    $data .= "<table class='table table-hover' id='my_procedure'>";
+    $data .="<thead class='mythead'>";
+    $data .= "<tr></tr><th>icd9</th>";
+    $data .= "<th>ชื่อหัตถการ</th>";
+    $data .= "<th>ราคา</th>";
+    $data .= "<th>ผู้ทำ</th></tr></thead>";
+    while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
 
-    $data .= "<tr>
-    <td>".$row['icd9cm']."</td>
-    <td>".$row['icd9name']."</td>
-    <td>".$row['charge']."</td>
-    <td>".$row['fname']."</td>
-    </tr>";
+        $data .= "<tr>
+        <td>".$row['icd9cm']."</td>
+        <td>".$row['icd9name']."</td>
+        <td>".$row['charge']."</td>
+        <td>".$row['fname']."</td>
+        </tr>";
 
-}
-$data .="</table>";
+    }
+    $data .="</table>";
+
 echo $data;
 
 exit;

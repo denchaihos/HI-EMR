@@ -15,6 +15,7 @@ $vn = $_GET['vn'];
 //$vn = 923329;
 include "myFunction/myFunction.php";
 $data = array();
+$data = "";
 $sql = "SELECT e.sickdate,e.sicktime,aet.aetype_desc_th,aep.nameaeplace,tae.nametypein,veh.namevehicle,
 CASE e.traffic
 WHEN '1' THEN 'ผู้ขับขี่'
@@ -69,10 +70,7 @@ WHEN '1' THEN 'มีการให้ IV fluid ก่อนมาถึง'
 WHEN '2' THEN 'ไม่มีการให้ IV fluid ก่อนมาถึง'
 WHEN '3' THEN 'ไม่จำเป็น'
 END AS fluid,
-
-
 t.nametri,
-
 CASE e.coma_eye
 WHEN '1' THEN 'ไม่ลืมตาเลย(ไม่มีการสตอบสนอง) No eye opening'
 WHEN '2' THEN 'ลืมตาเมื่อได้รับการกระตุ้น Eye openig to pain'
@@ -93,7 +91,6 @@ WHEN '3' THEN 'แขนหงอผิดปกติ (ชัก) flesion to pa
 WHEN '4' THEN 'ชักแขนขาหนึเมื่อได้รับการกระตุ้น Withdrawal from pain'
 WHEN '5' THEN 'ทราบตำแหน่งที่ได้รับบาดเจ็บ Localising pain'
 END AS coma_move,
-
 e.d_update,e.note from emergency e
 LEFT JOIN l_aetype aet on aet.aetype_code=e.aetype_ae
 LEFT JOIN l_aeplace aep on aep.aeplace=e.aeplace
@@ -101,39 +98,42 @@ LEFT JOIN l_typein_ae tae on tae.typein_ae=e.typein_ae
 LEFT JOIN l_vehicle veh on veh.vehicle=e.vehicle
 LEFT JOIN optriage ot on ot.vn=e.vn
 LEFT JOIN triage t on t.codetri=ot.triage
-where e.vn='$vn' ";
+where e.vn=$vn ";
 
-//e.vn='$vn'  e.vn=958010
 $result = mysql_query($sql, $con);
+//e.vn='$vn'  e.vn=958010
 
-$data = "<h5>การคัดกรองทางอุบัติเหตุ</h5>";
-$data .="<ul class='emergency'>";
-while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+//echo mysql_num_rows($result);
 
-    $data .= "<li class='emergency'><span class='emergencyLabel'>วันที่เกิดเหตุ</span><span>".DateThai($row['sickdate'])."</span></li>";
-    $data .= "<li class='emergency'><span class='emergencyLabel'>เวลาเกิดเหตุ</span><span>".$row['sicktime']."</span></li>";
-    $data .= "<li class='emergency'><span class='emergencyLabel'>ประเภทอุบัติเหตุ</span><span>".$row['aetype_desc_th']."</span></li>";
-    $data .= "<li class='emergency'><span class='emergencyLabel'>สถานที่เกิดอุบัติเหตุ</span><span>".$row['nameaeplace']."</span></li>";
-    $data .= "<li class='emergency'><span class='emergencyLabel'>วิธีการนำสั่งตัว</span><span>".$row['nametypein']."</span></li>";
-    $data .= "<li class='emergency'><span class='emergencyLabel'>ประเภทยานพาหนะ</span><span>".$row['namevehicle']."</span></li>";
-    $data .= "<li class='emergency'><span class='emergencyLabel'>ประเภทผู้บาดเจ็บ</span><span>".$row['traffic']."</span></li>";
-    $data .= "<li class='emergency'><span class='emergencyLabel'>การดื่มแอลกอฮอล์</span><span>".$row['alochol']."</span></li>";
-    $data .= "<li class='emergency'><span class='emergencyLabel'>การใช้ยาเสพติด</span><span>".$row['nacrotic']."</span></li>";
-    $data .= "<li class='emergency'><span class='emergencyLabel'>การคาดเข็มขัดนิรภัย</span><span>".$row['belt']."</span></li>";
-    $data .= "<li class='emergency'><span class='emergencyLabel'>การสวมหมวกนิรภัย</span><span>".$row['helmet']."</span></li>";
-    $data .= "<li class='emergency'><span class='emergencyLabel'>การดูแลการหายใจ</span><span>".$row['airway']."</span></li>";
-    $data .= "<li class='emergency'><span class='emergencyLabel'>การห้ามเลือด</span><span>".$row['stopbleed']."</span></li>";
-    $data .= "<li class='emergency'><span class='emergencyLabel'>การใส splint/slab</span><span>".$row['splint']."</span></li>";
-    $data .= "<li class='emergency'><span class='emergencyLabel'>การให้น้ำเกลือ/slab</span><span>".$row['fluid']."</span></li>";
-    $data .= "<li class='emergency'><span class='emergencyLabel'>ระดับความเร่งด่วน/slab</span><span>".$row['nametri']."</span></li>";
-    $data .= "<li class='emergency'><span class='emergencyLabel'>ระดับความรู้สึกทางตา</span><span>".$row['coma_eye']."</span></li>";
-    $data .= "<li class='emergency'><span class='emergencyLabel'>ระดับความรู้สึกทางด้านการพูด</span><span>".$row['coma_speak']."</span></li>";
-    $data .= "<li class='emergency'><span class='emergencyLabel'>ระดับความรู้สึกทางการเคลือนไหว</span><span>".$row['coma_move']."</span></li>";
+    $data .= "<h5>การคัดกรองทางอุบัติเหตุ</h5>";
+    $data .="<ul class='emergency'>";
+    while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+        $data .= "<li class='emergency'><span class='emergencyLabel'>วันที่เกิดเหตุ</span><span>".DateThai($row['sickdate'])."</span></li>";
+        $data .= "<li class='emergency'><span class='emergencyLabel'>เวลาเกิดเหตุ</span><span>".$row['sicktime']."</span></li>";
+        $data .= "<li class='emergency'><span class='emergencyLabel'>ประเภทอุบัติเหตุ</span><span>".$row['aetype_desc_th']."</span></li>";
+        $data .= "<li class='emergency'><span class='emergencyLabel'>สถานที่เกิดอุบัติเหตุ</span><span>".$row['nameaeplace']."</span></li>";
+        $data .= "<li class='emergency'><span class='emergencyLabel'>วิธีการนำสั่งตัว</span><span>".$row['nametypein']."</span></li>";
+        $data .= "<li class='emergency'><span class='emergencyLabel'>ประเภทยานพาหนะ</span><span>".$row['namevehicle']."</span></li>";
+        $data .= "<li class='emergency'><span class='emergencyLabel'>ประเภทผู้บาดเจ็บ</span><span>".$row['traffic']."</span></li>";
+        $data .= "<li class='emergency'><span class='emergencyLabel'>การดื่มแอลกอฮอล์</span><span>".$row['alochol']."</span></li>";
+        $data .= "<li class='emergency'><span class='emergencyLabel'>การใช้ยาเสพติด</span><span>".$row['nacrotic']."</span></li>";
+        $data .= "<li class='emergency'><span class='emergencyLabel'>การคาดเข็มขัดนิรภัย</span><span>".$row['belt']."</span></li>";
+        $data .= "<li class='emergency'><span class='emergencyLabel'>การสวมหมวกนิรภัย</span><span>".$row['helmet']."</span></li>";
+        $data .= "<li class='emergency'><span class='emergencyLabel'>การดูแลการหายใจ</span><span>".$row['airway']."</span></li>";
+        $data .= "<li class='emergency'><span class='emergencyLabel'>การห้ามเลือด</span><span>".$row['stopbleed']."</span></li>";
+        $data .= "<li class='emergency'><span class='emergencyLabel'>การใส splint/slab</span><span>".$row['splint']."</span></li>";
+        $data .= "<li class='emergency'><span class='emergencyLabel'>การให้น้ำเกลือ/slab</span><span>".$row['fluid']."</span></li>";
+        $data .= "<li class='emergency'><span class='emergencyLabel'>ระดับความเร่งด่วน/slab</span><span>".$row['nametri']."</span></li>";
+        $data .= "<li class='emergency'><span class='emergencyLabel'>ระดับความรู้สึกทางตา</span><span>".$row['coma_eye']."</span></li>";
+        $data .= "<li class='emergency'><span class='emergencyLabel'>ระดับความรู้สึกทางด้านการพูด</span><span>".$row['coma_speak']."</span></li>";
+        $data .= "<li class='emergency'><span class='emergencyLabel'>ระดับความรู้สึกทางการเคลือนไหว</span><span>".$row['coma_move']."</span></li>";
 
 
 
-}
-$data .="</ul>";
+    }
+
+    $data .="</ul>";
+
 echo $data;
 
 exit;

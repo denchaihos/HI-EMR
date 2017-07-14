@@ -1,4 +1,4 @@
-host:192.168.189.128
-username:hiuser
-password:212224
+host:localhost
+username:root
+password:123456
 db:hi

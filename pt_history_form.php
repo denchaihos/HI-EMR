@@ -95,31 +95,37 @@
                                                     <a href="#home" role="tab" data-toggle="tab">
                                                         <icon class="fa fa-stethoscope"></icon>
                                                         ข้อมูลซักประวัติ
+                                                        <span class="badge badge-success" id="inform_badge"></span>
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a href="#doctor" role="tab" data-toggle="tab">
                                                         <i class="fa fa-user-md"></i> การตรวจของแพทย์
+                                                        <span class="badge" id="doctor_badge"></span>
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a href="#drug" role="tab" data-toggle="tab" onclick="getDrugOpd()">
                                                         <i class="fa fa-medkit" aria-hidden="true"></i> ยาและอุปกรณ์ที่ใช้
+                                                        <span class="badge" id="drug_badge"></span>
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a href="#er" role="tab" data-toggle="tab" onclick="getErProcedure();getErData();">
                                                         <i class="fa fa-heartbeat"></i> การรักษาด้านฉุกเฉิน
+                                                        <span class="badge" id="emergency_badge"></span>
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a href="#dental" role="tab" data-toggle="tab" onclick="getdentalData()">
                                                         <i class="fa fa-paw"></i> ทันตกรรม
+                                                        <span class="badge" id="dental_badge"></span>
                                                     </a>
                                                 </li>
                                                 <li id="ipd_tab">
                                                     <a href="#ipd"  role="tab" data-toggle="tab" onclick="getIpdData()">
                                                         <i class="fa fa-bed"></i> ผู้ป่วยใน
+                                                        <span class="badge" id="ipd_badge"></span>
                                                     </a>
                                                 </li>
 
@@ -127,16 +133,19 @@
                                                 <li nav-item>
                                                     <a href="#lab" role="tab" data-toggle="tab" onclick="getLab()">
                                                         <i class="fa fa-flask"></i> ผลชัณสูตร
+                                                        <span class="badge" id="lab_badge"></span>
                                                     </a>
                                                 </li>
                                                 <li nav-item>
                                                     <a href="#xray" role="tab" data-toggle="tab" onclick="getXray();">
                                                         <i class="fa fa-cog"></i> เอ็กซเรย์
+                                                        <span class="badge" id="xray_badge"></span>
                                                     </a>
                                                 </li>
                                                 <li nav-item>
                                                     <a href="#cost" role="tab" data-toggle="tab" onclick="getCost();">
                                                         <i class="fa fa-money"></i> ค่าใช้จ่าย
+                                                        <span class="badge" id="cost_badge"></span>
                                                     </a>
                                                 </li>
                                             </ul>

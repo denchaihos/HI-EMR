@@ -1,6 +1,7 @@
 <?php
 session_start();
 ob_start();
+header('Content-Type: text/html; charset=utf-8');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,8 +24,6 @@ include 'crc16.php';
 
 //echo crc16($_POST['password']);
 $psswrd = crc16($_POST['password']);
-//$strSQL = "SELECT * FROM dct WHERE dct = '".$_POST['username']."'";
-//$strSQL = "SELECT * FROM dct WHERE dct = '".$_POST['username']."' and pssword = crc16('".$_POST['password']."')";
 $strSQL = "SELECT * FROM dct WHERE dct = '".$_POST['username']."' and psswrd = '$psswrd'";
 $objQuery = mysql_query($strSQL);
 

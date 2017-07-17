@@ -1,4 +1,5 @@
 <?php
+
 $accident_data=array(
     "ptname"=>"35",
     "visit_date"=>"37",

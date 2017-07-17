@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: text/html; charset=utf-8');
 /**
  * Created by PhpStorm.
  * User: User
@@ -12,11 +13,9 @@
     <title>Edit Diag</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
     <link href="css/myCss/pt_history_form.css" rel="stylesheet">
     <link href="css/myCss/emergency.css" rel="stylesheet">
-
-
 </head>
 <body>
 

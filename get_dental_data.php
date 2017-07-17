@@ -2,6 +2,7 @@
 // Start the session
 //session_start();
 //$_SESSION["vaccation_year"] = "59";
+header('Content-Type: text/html; charset=utf-8');
 function unset_n_reset(&$arr, $key)
 {
     unset($arr[$key]);

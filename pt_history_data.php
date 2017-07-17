@@ -1,4 +1,5 @@
-<?
+<?php
+header('Content-Type: text/html; charset=utf-8');
 include "connect.php";
 mysql_query("set character_set_results=utf8");
 mysql_query("set character_set_connection=utf8");

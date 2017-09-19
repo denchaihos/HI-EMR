@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Edit Diag</title>
+    <title>EMR</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
@@ -27,8 +27,37 @@
     $hn = 1;
     //$vn = $hn[1];
     ?>
+    <div class="modal-content stopDisplay" id="editDx">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="myModalLabel"> ปรับปรุงข้อมูล.</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="well">
+                        <form id="addPt" name="addPt">
+                            <h3><span class="label label-primary">แก้ไขวินิจฉัย</span></h3>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">ICD10</span>
+                                <input type="text" id="icd10" class="form-control" placeholder="ICD10" onkeyup="set_icd10name(this.value)"  onKeyPress="return tabE(this,event)">
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">ICD10NAME</span>
+                                <input type="text" id="icd10name" class="form-control" placeholder=""  onKeyPress="return tabE(this,event)">
+                            </div>
+                            <br>
+                            <button type="button" id="saveEditDx" class="btn btn-success btn-block" >บันทึก</button>
+                            <button type="button" id="register" class="btn btn-warning btn-block" onclick="closeAlert();">ยกเลิก</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <div class="col-lg-12" >
+    <div class="col-lg-12" id="main_div">
         <div class="panel panel-primary" >
             <div class="panel-heading"  style="margin-buttom:2px;">
                 <form class="form-inline">
@@ -36,6 +65,7 @@
                         <label for="hnn">Patient EMR::</label>
                         <label for="hn">HN::</label>
                         <input type="text" name="hn" class="form-control" id="hn" >
+
                     </div>
 
                     <button type="button" class="btn btn-default" onclick="getVstdate();getPtInform();">ตกลง</button>
@@ -54,10 +84,10 @@
             <div class="panel-body">
                 <div class="col-lg-12" id="main_content">
 
-                    <div class="col-lg-2" >
+                    <div class="col-lg-2" style="width: 200px">
 
                         <h4>วันที่มารับบริการ</h4>
-                        <div id="vstdate_h" class="vstdate_h">
+                        <div id="vstdate_h" class="vstdate_h" >
 
                             <table id="table_h" class="table  table-hover">
                                 <tbody id="visit_date">
@@ -66,7 +96,7 @@
                             </table>
                         </div>
                     </div>
-                    <div class="col-lg-10 " id="printableArea">
+                    <div class="col-lg-10 " id="printableArea detailPt">
                         <div id="content_history" class="content_history panel panel-danger">
 
                             <div class="panel-body" id="panel">
@@ -97,7 +127,7 @@
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a href="#doctor" role="tab" data-toggle="tab">
+                                                    <a href="#doctor" role="tab" data-toggle="tab" onclick="getDxPeOpdData()">
                                                         <i class="fa fa-user-md"></i> การตรวจของแพทย์
                                                         <span class="badge" id="doctor_badge"></span>
                                                     </a>
@@ -183,19 +213,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="doctor">
-                                                    <div class="panel-body" id="panel">
-                                                        <div class="col-lg-6">
-                                                            <h6><b>ข้อมูลการตรวจร่างกาย</b></h6>
-                                                            <span id="pe_h" class="text_content"> </span>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <h6><b>ข้อมูลการวินิจฉัย</b></h6>
-                                                            <span class="label label-default" id="title">PDX&nbsp</span>
-                                                            <span id="pdx_h" class="text_content"> </span>
-                                                            <br/>
-                                                            <span class="label label-default" id="title">Dx Other&nbsp</span>
-                                                            <span id="dx_other_h" class="text_content"> </span>
-                                                        </div>
+                                                    <div class="panel-body" id="dx_opd">
+
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="drug">
@@ -247,14 +266,30 @@
                                                             </li>
                                                             <li>
                                                                 <a href="#ipd_drug" role="tab" data-toggle="tab" onclick="getDrugIpd()">
-                                                                    <i class="fa fa-user-md"></i> ยาที่ใช้ในโรงพยาบาล
+                                                                    <i class="fa fa-medkit"></i> ยาและอุปกรณ์ที่ใช้
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a href="#ipd_lab" role="tab" data-toggle="tab" onclick="getDrugIpd()">
-                                                                    <i class="fa fa-medkit" aria-hidden="true"></i> Lab
+                                                                <a href="#ipd_lab" role="tab" data-toggle="tab" onclick="getLabIpd()">
+                                                                    <i class="fa fa-flask" aria-hidden="true"></i> Lab
                                                                 </a>
                                                             </li>
+                                                            <li>
+                                                                <a href="#ipd_xray" role="tab" data-toggle="tab" onclick="getXrayIpd()">
+                                                                    <i class="fa fa-medkit" aria-hidden="true"></i> X-ray
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#ipd_dx" role="tab" data-toggle="tab" onclick="getDx_ProcIpd()">
+                                                                    <i class="fa fa-medkit" aria-hidden="true"></i> วินิจฉัยและหัตถการ
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#ipd_dx" role="tab" data-toggle="tab" onclick="getDx_ProcIpd()">
+                                                                    <i class="fa fa-medkit" aria-hidden="true"></i> ค่าใช้จ่ายผู้ป่วยใน
+                                                                </a>
+                                                            </li>
+
                                                         </ul>
                                                         <!-- Tab panes -->
                                                         <div class="tab-content" id="ipd_tabs">
@@ -266,16 +301,34 @@
                                                                 </div>
                                                             </div>
                                                             <div class="tab-pane fade " id="ipd_drug">
-
-
                                                                 <div id="ipd_drugs">
 
                                                                 </div>
 
                                                             </div>
                                                             <div class="tab-pane fade " id="ipd_lab">
+                                                                <table width="400px" class='table table-hover table-striped' id="my_lab">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th width="50%"><span class="text">Labname</span></th>
+                                                                        <th width="10%"><span class="text">Result</span></th>
+                                                                        <th width="20%"><span class="text">NormalValue</span></th>
+                                                                        <th width="20%"><span class="text">Unit</span></th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody id="ipd_lab_result">
 
-                                                                Lab
+                                                                    </tbody>
+
+                                                                </table>
+                                                            </div>
+                                                            <div class="tab-pane fade " id="ipd_xray">
+                                                                <div id="xray_ipd_result">
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="tab-pane fade " id="ipd_dx">
+
                                                             </div>
                                                         </div>
 
@@ -327,6 +380,8 @@
         </div>
     </div>
     <input type="hidden" name="vn" id="vn_currentt" >
+
+
 
 </body>
 </html>

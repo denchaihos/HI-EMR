@@ -2,7 +2,7 @@
 .vstdate_h {
     overflow: auto;
     width: 180px;
-    height: 500px;
+   /* height: 500px;*/
     position : left;
     cursor: pointer;
 
@@ -18,8 +18,8 @@
     position: absolute;
     left: 0px;
     overflow: scroll;
-    height: 500px;
-    min-width:1000px;
+    /*height: 500px;*/
+   /* min-width:1000px;*/
     display: inline-block;
 
 }
@@ -48,12 +48,19 @@
     font-family: "cordia new", "cordia new";
     font-size: 16px;
 }
-#mydrugs tr,#my_lab tr,#my_cost tr,#my_ipd_drughome tr,#mydrugs td,#my_lab td,#my_cost td,#my_ipd_drug td,#my_ipd_drughome td,#my_procedure td{
+#mydrugs tr,#my_lab tr,#my_cost tr,#my_ipd_drughome tr,#mydrugs td,#my_lab td,#my_cost td,#my_ipd_drug td,#my_ipd_drughome td,#my_procedure td,#my_ipd_dx td,#my_ipd_xray td,#my_ipd_proc td{
     max-height: 25px !important;
     height: 22px !important;
     /*display: inline-table;*/
     padding:0px !important;
+    font-family: "cordia new", "cordia new";
+    font-size: 16px;
 
+}
+#appoint,#labTest{
+    padding:0px !important;
+    font-family: "cordia new", "cordia new";
+    font-size: 16px;
 }
 
 .main_content{
@@ -73,7 +80,10 @@
 
 }
 
+
 .nav-tabs > li > a {
+    padding-right: 4px;
+    padding-left: 4px;
     height: 30px;
     margin: 2px;
     background: #DADADA;
@@ -91,7 +101,7 @@
 .nav-tabs > li.active > a:hover {
     background: #F5F5F5;
     font-family: tahoma, geneva, sans-serif;
-    font-size: 12px;
+    font-size: 13px;
     color: #000066;
     box-shadow : inset 0 0 0 0 rgba(0, 0, 0, .4), - 2 px - 3 px 5 px - 2 px rgba(0, 0, 0, .4);
     border-top-left-radius: 5px;
@@ -104,13 +114,13 @@
 
 /* Tab Content */
 .tab-pane {
-    height: 300px;
+   /* height: 300px;*/
     background: #F5F5F5;
     box-shadow: 0 0 4px rgba(0, 0, 0, .4);
     border-radius : 0;
     text-align : center;
     padding: 5px;
-    overflow: scroll;
+    /*overflow: scroll;*/
 }
 .tab-content,.tab-pane{
     text-align: left;
@@ -127,7 +137,7 @@
     position:relative;
 }
 #table-scroll {
-    height:200px;
+    /*height:200px;*/
     overflow:auto;
     margin-top:20px;
 }
@@ -162,10 +172,27 @@ table#table_h td:last-child{
 
 /*****ipd******/
 #ipd_home,#ipd_drug{
-    height: 200px;
+    /*height: 200px;*/
     overflow: scroll;
 }
 .ipt_vstdate{
     color: red;
 
+}
+
+span.badge{
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+
+    font-family: "cordia new", "cordia new";
+    font-size: 17px;
+
+}
+
+.editDx{
+    padding-bottom: 1px;
+    padding-top: 1px;
+    width: 50px;
 }

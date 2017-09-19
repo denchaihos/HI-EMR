@@ -12,10 +12,10 @@ mysql_query("set character_set_results=utf8");
 mysql_query("set character_set_connection=utf8");
 mysql_query("set character_set_client=utf8");
 
-$vn = $_GET['vn'];
-//$vn = 886222;
+$an = $_GET['an'];
+//$an = '60000045';
 
-$sql = "SELECT lb.labcode,lb.ln,l.dbf,CONCAT(l.dbf,l.dbfs) as tableResult,l.labname FROM lbbk lb JOIN lab l on l.labcode=lb.labcode WHERE vn ='$vn' and an=0 ";
+$sql = "SELECT lb.labcode,lb.ln,l.dbf,CONCAT(l.dbf,l.dbfs) as tableResult,l.labname FROM lbbk lb JOIN lab l on l.labcode=lb.labcode WHERE an ='$an'  ";
 $data = array();
 //$group = array();
 $labff = array();

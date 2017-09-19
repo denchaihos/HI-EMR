@@ -16,7 +16,7 @@ $vn = $_GET['vn'];
 //$vn = 770461;
 $data = array();
 $sql = "SELECT xr.xryname from xryrqt x join xray xr on xr.xrycode=x.xrycode
-where x.vn='$vn'  ";
+where x.vn='$vn' and an=0 ";
 $data = array();
 
 $result = mysql_query($sql, $con);

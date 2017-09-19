@@ -188,5 +188,9 @@ header('Content-Type: text/html; charset=utf-8');
 <script src="js/ie10-viewport-bug-workaround.js"></script>
 <script src="js/alertifyjs/alertify.min.js"></script>
 <script src="myFunction/pt_history_form.js"></script>
+<script src="myFunction/index.js"></script>
+<script src="myFunction/er.js"></script>
+<script src="myFunction/ipd.js"></script>
+<script src="myFunction/dental.js"></script>
 </body>
 </html>

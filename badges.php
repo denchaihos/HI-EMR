@@ -30,7 +30,7 @@ while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
     array_push($data,$row_array);
 }
 /*drug*/
-$sql = "SELECT count(p.vn) as drug from prsc p JOIN prscdt pd on pd.prscno=p.prscno where p.vn=$vn   ";
+$sql = "SELECT count(p.vn) as drug from prsc p JOIN prscdt pd on pd.prscno=p.prscno where p.vn=$vn and p.an =0  ";
 $result = mysql_query($sql, $con);
 while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
     $row_array['drug'] = $row['drug'];

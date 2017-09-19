@@ -1,7 +1,14 @@
 /**
  * Created by User on 14/7/2559.
  */
+var vn_global_var = '';
+var an_global_var = '';
 
+$(document).ready(function(){
+    $('#editDx').addClass('stopDisplay');
+    //lert('me');
+
+});
 function age(dob, today) {
     var today = today || new Date(),
         result = {
@@ -38,10 +45,18 @@ function getVstdate(){
         $.each(data, function(key,value){
 
             if(value.an != 0){
-                $('td#vstdate').addClass('ipt_vstdate');
-
-            }
-
+               // $('td#vstdate').addClass('ipt_vstdate');
+                $("tbody#visit_date").append("<tr>" +
+                    "<td id='vstdate' class='ipt_vstdate'>"+value.vstdttm+
+                    "<input type='hidden' name='vn' id='vn' value="+ value.vn+">"+
+                    "<input type='hidden' name='hn' id='hn' value="+hn+">"+
+                    "<input type='hidden' name='an' id='an' value="+value.an+">"+
+                    "</td>" +
+                    "<td id='an' class='ipt_vstdate'>"+value.costcenter+
+                    "</td>" +
+                    "</tr>"
+                );
+            }else{
             $("tbody#visit_date").append("<tr>" +
                 "<td id='vstdate'>"+value.vstdttm+
                 "<input type='hidden' name='vn' id='vn' value="+ value.vn+">"+
@@ -52,6 +67,7 @@ function getVstdate(){
                 "</td>" +
                 "</tr>"
             );
+            }
         });
         $('td#vstdate:first').trigger('click');
     });
@@ -65,6 +81,8 @@ $('body').on('click', 'td#vstdate', function(){
     $('#vn_currentt').val(vn) ;
     var hn =  $(this).find('input#hn').val();
     var an =  $(this).find('input#an').val();
+    an_global_var = an;
+    vn_global_var = vn;
 
     //getPtInform(hn);
     $('td#vstdate').removeClass('td_current');
@@ -80,10 +98,7 @@ $('body').on('click', 'td#vstdate', function(){
     $('#rr').text('') ;
     $('#sbp').text('');
     $('#cc_h').text('');
-    $('#pe_h').text('');
-    $('#pi_h').text('');
-    $('#pdx_h').text('');
-    $('#dx_other_h').text('')
+
     var history_vstdate = this.innerText;
 
     $('span#dateshow').text(history_vstdate);
@@ -106,11 +121,6 @@ $('body').on('click', 'td#vstdate', function(){
             $('#rr').text(value.rr+" ครั้ง/นาที") ;
             $('#sbp').text(value.sbp+" / "+value.dbp+" มม.ปรอท");
             $('#cc_h').text(value.cc);
-            $('#pe_h').text(value.pe);
-            $('#pi_h').text(value.pi);
-            $('#pdx_h').text(value.pdx);
-            $('#dx_other_h').text('');
-            $('#dx_other_h').append("<div>"+value.dx1+"</div><div>"+value.dx2+"</div><div>"+value.dx3+"</div><div>"+value.dx4+"</div><div>"+value.dx5+"</div>");
 
         });
     });
@@ -118,9 +128,6 @@ $('body').on('click', 'td#vstdate', function(){
     getLabTest();
     getAppointment();
     createBadges();
-
-
-
 
 });
 function getPtInform(){
@@ -131,10 +138,9 @@ function getPtInform(){
 }
 
 function createBadges(){
-    var vn = $('input#vn_currentt').val();
+    var vn = vn_global_var;
     $('span.badge').text('');
     $.getJSON('badges.php',{vn:vn}, function(data) {
-
         $.each(data, function(key,value){
             $('span#inform_badge').text(value.inform);
             $('span#doctor_badge').text(value.doctor);
@@ -150,7 +156,7 @@ function createBadges(){
     });
 }
 function getLab(){
-    var vn = $('input#vn_currentt').val();
+    var vn = vn_global_var;
     //alert(vn);
     $('#lab_result').empty();
     $.getJSON('get_lab_data.php',{vn:vn}, function(data) {
@@ -189,7 +195,7 @@ function getLab(){
     });
 }
 function getDrugOpd(){
-    var vn = $('input#vn_currentt').val();
+    var vn = vn_global_var;
 
     $('tbody#my_drugs tr').remove();
     $.getJSON('get_drug_opd_data.php',{vn:vn}, function(data) {
@@ -208,7 +214,7 @@ function getDrugOpd(){
 }
 
 function getXray(){
-    var vn = $('input#vn_currentt').val();
+    var vn = vn_global_var;
     $('div#xray_result').empty();
     $.getJSON('get_xray_data.php',{vn:vn}, function(data) {
         $.each(data, function(key,value){
@@ -220,7 +226,7 @@ function getXray(){
 }
 
 function getCost(){
-    var vn = $('input#vn_currentt').val();
+    var vn = vn_global_var;
 
     $('div#cost_result').empty();
     $.get('get_cost_data.php',{vn:vn}, function(data) {
@@ -229,9 +235,9 @@ function getCost(){
     });
 }
 function getLabTest(){
-    var vn = $('input#vn_currentt').val();
+    var vn = vn_global_var;
     $('div#lab_test').empty();
-    $.get('get_lab_test.php',{vn:vn}, function(data) {
+    $.get('get_lab_send.php',{vn:vn}, function(data) {
         $("#lab_test").html(data);
 
     });
@@ -257,53 +263,6 @@ function printDiv(divName) {
 
     document.body.innerHTML = originalContents;
 }
-/***************IPD****************/
-function getIpdData(){
-    var vn = $('input#vn_currentt').val();
-    $('div#ipd_data').empty();
-    $.get('get_ipd_data.php',{vn:vn}, function(data) {
-        $("#ipd_data").html(data);
-    });
-
-}
-function getDrugIpd(){
-    var an = $('input#an').val();
-    $('div#ipd_drugs').empty();
-    $.get('get_drug_ipd_data.php',{an:an}, function(data) {
-        $("div#ipd_drugs").html(data);
-    });
-}
-/******************ER*******************/
-function getErData(){
-    var vn = $('input#vn_currentt').val();
-//alert(vn);
-    $('div#er_result').empty();
-    $.get('get_emergency_data.php',{vn:vn}, function(data) {
-        $("#er_result").html(data);
-    });
-
-}
-function getErProcedure(){
-    var vn = $('input#vn_currentt').val();
-
-    $('div#er_procedure').empty();
-    $.get('get_procedure_data.php',{vn:vn}, function(data) {
-        $("#er_procedure").html(data);
-    });
-
-}
-/******************dental*******************/
-function getdentalData(){
-    var vn = $('input#vn_currentt').val();
-
-    $('div#dental_result').empty();
-    $.get('get_dental_data.php',{vn:vn}, function(data) {
-        $("#dental_result").html(data);
-    });
-
-}
-
-
 
 
 //create alert  dialog  myAlert name global
@@ -337,4 +296,68 @@ function setConfig(){
     }).error(function(){
         alertify.error('Errro loading external file.');
     });
+}
+
+var id_dx = '';
+
+function updateDx(ptType){
+
+    if(ptType == 'opd'){
+        var url = 'edit_dx_opd.php';
+    }else{
+        var url = 'edit_dx_ipd.php';
+    }
+
+    var icd10 = $('input#icd10').val();
+    var icd10name = $('input#icd10name').val();
+    if( icd10name.length == 0 || icd10name == "ICD10 is not valid" ){
+        alertify.alert('คำแนะนำ', 'ICD10 ไม่ถูกต้อง', function(){ alertify.success('Ok'); });
+
+    }else{
+        $.ajax({
+         url: url,
+         type: "POST",
+         data: {'id_dx': id_dx,'icd10':icd10,'icd10name':icd10name},
+         dataType: "html",
+         headers: {
+         'Cache-Control': 'no-cache, no-store, must-revalidate',
+         'Pragma': 'no-cache',
+         'Expires': '0'
+         },
+         cache: false
+
+         }).success(function(data){
+         if(data.match('Success')){
+         closeDialog();
+         alertify.success(data);
+
+         $('button#'+id_dx).html(icd10);
+             if(ptType == 'opd'){
+                 $('button#'+id_dx).parent().next().next('td').text(icd10name) ;
+             }else{
+                $('button#'+id_dx).parent().next('td').text(icd10name) ;
+             }
+         closeDialog();
+         }
+
+         }).error(function(){
+         alertify.error('Errro loading external file.');
+         });
+    }
+}
+function test(){
+    alert('me');
+}
+function getDxPeOpdData(){
+    $('button#saveEditDx').attr('onClick',"updateDx('opd')");
+    $('div#dx_opd').empty();
+    $.get('get_dx_pe_opd_data.php',{vn:vn_global_var}, function(data) {
+        $("#dx_opd").html(data);
+    });
+
+}
+function closeDialog(){
+    $('#editDx').removeClass('display');
+    $('#editDx').addClass('stopDisplay');
+    alertify.closeAll();
 }

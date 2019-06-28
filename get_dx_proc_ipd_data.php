@@ -43,7 +43,7 @@ $data .="</tbody></table>";
 
 
 //Procedure
-$sql = "SELECT i.id,i.icd9cm,i.icd9name,i.date,i.time,i.charge FROM ioprt i join prcd p on p.codeprcd=i.icd9cm  where p.income='04' and  i.an='$an' ";
+$sql = "SELECT i.id,i.icd9cm,i.icd9name,i.date,i.time,i.charge FROM ioprt i join prcd p on p.codeprcd=i.icd9cm  where p.income='04' and  i.an='$an' GROUP BY i.id ";
 $data2 = array();
 
 $result = mysql_query($sql, $con);
@@ -54,7 +54,7 @@ while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
     //  $row_array['xryname'] = $row['xryname'];
     // array_push($data,$row_array);
     $data2 .= "<tr>";
-    $data2 .= "<td><button type='button' id='".$row['id']."' class='btn btn-info editDx' onclick='editProcIpd(this.id)'>".$row['icd9cm']."</button></td>";
+    $data2 .= "<td><button type='button' id='".$row['id']."' class='btn btn-info editDx' onclick='popupEditProc(this.id)'>".$row['icd9cm']."</button></td>";
     $data2 .= "<td>".$row['icd9name']."</td>";
     $data2 .= "<td>".$row['date']."</td>";
     $data2 .= "<td>".$row['time']."</td>";

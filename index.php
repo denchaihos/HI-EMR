@@ -53,7 +53,7 @@ header('Content-Type: text/html; charset=utf-8');
     <link rel="stylesheet" href="js/alertifyjs/css/themes/semantic.rtl.min.css"/>
     <!-- Bootstrap theme -->
     <link rel="stylesheet" href="js/alertifyjs/css/themes/bootstrap.rtl.min.css"/>
-    <link rel="stylesheet" href="js/jquery-ui/jquery-ui.min.css"/>
+<!--    <link rel="stylesheet" href="js/jquery-ui/jquery-ui.min.css"/>-->
 </head>
 
 <body>
@@ -187,10 +187,13 @@ header('Content-Type: text/html; charset=utf-8');
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="js/ie10-viewport-bug-workaround.js"></script>
 <script src="js/alertifyjs/alertify.min.js"></script>
+<script src="myFunction/dateFormat.js"></script>
+
 <script src="myFunction/pt_history_form.js"></script>
 <script src="myFunction/index.js"></script>
 <script src="myFunction/er.js"></script>
 <script src="myFunction/ipd.js"></script>
 <script src="myFunction/dental.js"></script>
+<script src="myFunction/summary_page.js"></script>
 </body>
 </html>

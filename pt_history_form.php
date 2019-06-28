@@ -26,77 +26,47 @@
     //$hn = $_GET['hn'];
     $hn = 1;
     //$vn = $hn[1];
-    ?>
-    <div class="modal-content stopDisplay" id="editDx">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal"><span class="sr-only">Close</span></button>
-            <h4 class="modal-title" id="myModalLabel"> ปรับปรุงข้อมูล.</h4>
-        </div>
-        <div class="modal-body">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="well">
-                        <form id="addPt" name="addPt">
-                            <h3><span class="label label-primary">แก้ไขวินิจฉัย</span></h3>
-                            <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1">ICD10</span>
-                                <input type="text" id="icd10" class="form-control" placeholder="ICD10" onkeyup="set_icd10name(this.value)"  onKeyPress="return tabE(this,event)">
-                            </div>
-                            <br>
-                            <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1">ICD10NAME</span>
-                                <input type="text" id="icd10name" class="form-control" placeholder=""  onKeyPress="return tabE(this,event)">
-                            </div>
-                            <br>
-                            <button type="button" id="saveEditDx" class="btn btn-success btn-block" >บันทึก</button>
-                            <button type="button" id="register" class="btn btn-warning btn-block" onclick="closeAlert();">ยกเลิก</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    include "modal_data.php";
+    ?>   
 
     <div class="col-lg-12" id="main_div">
-        <div class="panel panel-primary" >
-            <div class="panel-heading"  style="margin-buttom:2px;">
+        <div class="panel panel-primary">
+            <div class="panel-heading"  >
                 <form class="form-inline">
                     <div class="form-group">
                         <label for="hnn">Patient EMR::</label>
                         <label for="hn">HN::</label>
                         <input type="text" name="hn" class="form-control" id="hn" >
-
                     </div>
-
                     <button type="button" class="btn btn-default" onclick="getVstdate();getPtInform();">ตกลง</button>
-
+                    <!-- <button type="button" class="btn btn-default" onclick="getInform_Data()">พิมพ์</button> -->
+                    <button type="button" class="btn btn-default" onclick="popupSummaryData('show')">พิมพ์</button>
+                   
+                    
 
                         <span style="display: none"> วันที่  <input type="hidden" name="vstdate_fromclick" id="vstdate_fromclick" value=""/></span>
                         <span style="display: none" id="dateshow"></span>
                     <input type="button" style="display: none" onclick="printDiv('printableArea')" value="print Send TestLab!" />
 
                 </form>
-
                 <input type="hidden" name="hn" id="hnn" value="<? echo $hn ?>"/>
-
-
             </div>
             <div class="panel-body">
                 <div class="col-lg-12" id="main_content">
-
-                    <div class="col-lg-2" style="width: 200px">
-
+                    <!--     <div class="col-lg-4" style="width: 220px">-->
+                    <div class="col-lg-2" >
                         <h4>วันที่มารับบริการ</h4>
-                        <div id="vstdate_h" class="vstdate_h" >
+                        <!--  <div id="vstdate_h" class="vstdate_h" >-->
+                        <div class="vstdate_hf"  >
+                            <table id="table_h"  class="table  table-hover">
+                                <tbody id="visit_date" >
 
-                            <table id="table_h" class="table  table-hover">
-                                <tbody id="visit_date">
 
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    <div class="col-lg-10 " id="printableArea detailPt">
+                    <div class="col-lg-10" id="printableArea detailPt">
                         <div id="content_history" class="content_history panel panel-danger">
 
                             <div class="panel-body" id="panel">
@@ -179,32 +149,14 @@
                                             </ul>
 
                                             <!-- Tab panes -->
+
                                             <div class="tab-content">
                                                 <div class="tab-pane fade active in" id="home">
                                                     <!--<h6><b>ข้อมูลผู้ป่วย</b></h6>-->
-                                                    <span class="label label-default" id="title">น้ำหนัก&nbsp</span>
-                                                    <span id="bw" class="text_content"> </span>
-                                                    <span class="label label-default" id="title">ส่วนสูง&nbsp</span>
-                                                    <span id="height" class="text_content"> </span>
-                                                    <span class="label label-default" id="title">รอบเอว&nbsp</span>
-                                                    <span id="waist_cm" class="text_content"> </span>
-                                                    <span class="label label-default" id="title">BMI&nbsp</span>
-                                                    <span id="bmi" class="text_content"> </span>
-                                                    <span class="label label-default" id="title">อุณหภูมิ&nbsp</span>
-                                                    <span id="tt" class="text_content"> </span>
-                                                    <span class="label label-default" id="title">pr&nbsp</span>
-                                                    <span id="pr" class="text_content"> </span>
-                                                    <span class="label label-default" id="title">rr&nbsp</span>
-                                                    <span id="rr" class="text_content"> </span>
-                                                    <span class="label label-default" id="title">BP&nbsp</span>
-                                                    <span id="sbp" class="text_content"> </span>
-                                                    <br/>
-                                                    <span class="label label-default" id="title">CC&nbsp</span>
-                                                    <span id="cc_h" class="text_content"> </span>
-                                                    <div>
-                                                        <span class="label label-default" id="title">PI&nbsp</span>
-                                                        <span id="pi_h" class="text_content"> </span>
+                                                    <div id="screening_data">
+
                                                     </div>
+
                                                     <div id="lab_test">
 
                                                     </div>
@@ -214,7 +166,7 @@
                                                 </div>
                                                 <div class="tab-pane fade" id="doctor">
                                                     <div class="panel-body" id="dx_opd">
-
+                                                        test
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="drug">
@@ -227,6 +179,8 @@
                                                                 echo '<th class="mythead">ลำดับ</th>';
                                                                 echo '<th >ชื่อยา</th>';
                                                                 echo '<th>จำนวน</th>';
+                                                                echo '<th>ราคาต่อหน่วย</th>';
+                                                                echo '<th>จำนวนเงิน</th>';
                                                                 echo '<th>วิธีกิน</th>';
                                                                 echo '</tr>';
                                                                 echo '</thead>';
@@ -336,10 +290,11 @@
                                                     </div>
 
                                                 </div>
-                                                <div class="tab-pane fade" id="lab">
+                                                <!-- <div class="tab-pane fade" id="lab"> -->
+                                                <div class="tab-pane fade" id="my_opd_lab">
                                                     <h6>ผลตรวจทางห้องปฏิบัติการ</h6>
                                                     <div id="table-wrapper">
-                                                        <div id="table-scroll">
+                                                        <div id="table-scroll ">
                                                             <table class='table table-hover table-striped' id="my_lab">
                                                                 <thead>
                                                                     <tr>

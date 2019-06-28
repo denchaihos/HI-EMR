@@ -9,11 +9,19 @@ var w = window,
     screenWidth = (w.innerWidth || e.clientWidth || g.clientWidth),
     screenHeight = (w.innerHeight|| e.clientHeight|| g.clientHeight)-90;
 $(document).ready(function(){
+    //ert(screenWidth);
     $("div#main_div").css("width", screenWidth+10);
     $("div#main_div").css("height", screenHeight);
-    $(".vstdate_h").css("height", screenHeight-85);
+  //  $(".vstdate_h").css("width", '300px');
+    $(".vstdate_hf").css("height", screenHeight-85);
+
     $(".content_history").css("height", screenHeight-50);
-    $(".content_history").css("width", screenWidth-230);
+    if(screenWidth>1900){
+        //for monitor width more 1900
+    $(".content_history").css("width", screenWidth-350);
+    }else{
+        $(".content_history").css("width", screenWidth-250);
+    }
 
 
 

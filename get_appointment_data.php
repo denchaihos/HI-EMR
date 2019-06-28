@@ -13,10 +13,10 @@ mysql_query("set character_set_connection=utf8");
 mysql_query("set character_set_client=utf8");
 
 $vn = $_GET['vn'];
-//$vn = 923329;
+//$vn = 958923;
 $data = array();
-$sql = "SELECT o.fudate,concat(d.fname,'   ',d.lname) as doctor,c.namecln,dscrptn from oapp o LEFT JOIN dct d on d.lcno=o.dct
-LEFT JOIN cln c on c.cln=o.cln where o.vn='$vn'";
+$sql = "SELECT o.fudate,concat(d.fname,'   ',d.lname) as doctor,c.namecln,o.dscrptn from oapp o LEFT JOIN dct d on d.lcno=o.dct
+LEFT JOIN cln c on c.cln=o.cln where o.vn='$vn' group  by o.id";
 
 
 $result = mysql_query($sql, $con);

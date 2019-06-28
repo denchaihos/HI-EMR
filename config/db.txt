@@ -1,4 +1,4 @@
-host:localhost
-username:root
-password:123456
+host:192.168.10.9
+username:hiuser
+password:212224
 db:hi

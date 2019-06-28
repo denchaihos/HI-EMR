@@ -37,11 +37,12 @@ while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
     array_push($data,$row_array);
 }
 /*emergency*/
-$sql = "SELECT e.emergency from(
+/*$sql = "SELECT e.emergency from(
 SELECT count(e.vn) as emergency FROM emergency e where  e.vn=$vn
 UNION
-SELECT count(p.vn) as emergency FROM oprt p where  p.vn=$vn
-) as e where e.emergency>0   ";
+SELECT COUNT(DISTINCT (p.id)) as  emergency FROM oprt p join prcd pr on pr.codeprcd=p.icd9cm where  p.vn=$vn and pr.income<>7 GROUP BY p.id
+) as e where e.emergency>0   ";*/
+$sql = "SELECT count(e.vn) as emergency FROM emergency e where  e.vn=$vn ";
 $result = mysql_query($sql, $con);
 while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
     $row_array['emergency'] = $row['emergency'];

@@ -38,9 +38,10 @@ if (mysql_num_rows($result)>0) {
 }
 /**************dx///////*/
 
-$sql = "SELECT a.namearea,dx.icdda,dx.charge,dx.dtxtime,i.nameicdda from dt d
+$sql = "SELECT dx.id,a.namearea,dx.icdda,dx.dttx,dx.charge,dx.dtxtime,i.nameicdda,c.namecdt2 from dt d
 LEFT JOIN dtdx dx on dx.dn=d.dn
 LEFT JOIN icdda i on i.codeicdda=dx.icdda
+LEFT JOIN cdt2 c on c.codecdt2=dx.dttx
 LEFT JOIN areacode a on a.codearea=dx.area
 where d.vn=$vn";
 $result = mysql_query($sql, $con);
@@ -50,7 +51,9 @@ if (mysql_num_rows($result)>0) {
     $data .= "<table class='table table-hover' id='my_procedure'>";
     $data .= "<thead class='mythead'>";
     $data .= "<tr></tr><th>ตำแหน่งฟัน</th>";
-    $data .= "<th>การวินิจฉัย</th>";
+    $data .= "<th>รหัสวินิจฉัย</th>";
+    $data .= "<th>ชื่อวินิจฉัย</th>";
+    $data .= "<th>รหัสหัตถการ</th>";
     $data .= "<th>ชื่อหัตถการ</th>";
     $data .= "<th>ราคา</th>";
     $data .= "</tr></thead>";
@@ -58,8 +61,10 @@ if (mysql_num_rows($result)>0) {
 
         $data .= "<tr>
         <td>" . $row['namearea'] . "</td>
-        <td>" . $row['icdda'] . "</td>
+        <td><button type='button' id='".$row['id']."' class='btn btn-info editDx' onclick='popupEditDx(this.id)'>" . $row['icdda'] . "</button></td>
         <td>" . $row['nameicdda'] . "</td>
+        <td><button type='button' id='".$row['id']."' class='btn btn-info editProc' onclick='popupEditProc(this.id)'>" . $row['dttx'] . "</button></td>
+        <td>" . $row['namecdt2'] . "</td>
         <td>" . $row['charge'] . "</td>
         </tr>";
 

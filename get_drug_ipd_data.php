@@ -23,8 +23,9 @@ $prscno_med_home = mysql_fetch_array($result_med_home);
 $prscno_med_home = $prscno_med_home['prscno'];
 
 
-$sql = "SELECT ipr.namedrug,ipr.qty,ipr.medusage,m.doseprn1,m.doseprn2
+$sql = "SELECT ipr.namedrug,ipr.qty,p.charge,ipr.medusage,m.doseprn1,m.doseprn2,ipr.qty * mt.price as chargeprice
  from prsc p JOIN iprsc ipr on ipr.prscno=p.prscno
+ JOIN meditem mt on mt.meditem=ipr.meditem
 left join medusage m on m.dosecode=ipr.medusage
  where p.an='$an' GROUP BY p.prscno,ipr.meditem,ipr.medusage ";
 $result = mysql_query($sql, $con);
@@ -36,7 +37,7 @@ while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
     $data .="<tr>";
     $data .= "<td>".$row['namedrug']."</td>";
     $data .= "<td>".$row['qty']."</td>";
-    $data .= "<td>".$row['medusage']."</td>";
+    $data .= "<td>".$row['chargeprice']."</td>";
     $data .= "<td>".$row['doseprn1']."</td>";
     $data .= "<td>".$row['doseprn2']."</td>";
     $data .="</tr>";

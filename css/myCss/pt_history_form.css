@@ -1,12 +1,20 @@
 
-.vstdate_h {
-    overflow: auto;
-    width: 180px;
-   /* height: 500px;*/
-    position : left;
-    cursor: pointer;
+.vstdate_hf {
 
-}
+     overflow: auto;
+     /* width: 180px !important;
+     /* height: 500px;*/
+     /*  position : left;*/
+     /* cursor: pointer;*/
+
+ }.vstdate_hm {
+      overflow: auto;
+      /* width: 180px !important;
+      /* height: 500px;*/
+      /*  position : left;*/
+      /* cursor: pointer;*/
+
+  }
 #main_content{
     position: relative;
     margin-left: 0px;
@@ -31,7 +39,7 @@
 }
 
 .text_content {
-    font-size: 13px;
+    font-size: 15px;
 }
 
 #space {
@@ -44,8 +52,9 @@
 .panel-body{
     padding: 0px;
 }
-#table_h,#mydrugs,#my_cost,#my_lab,#my_ipd_drug,#my_ipd_drughome,#my_procedure{
-    font-family: "cordia new", "cordia new";
+
+#mydrugs,#my_cost,#my_lab,#my_ipd_drug,#my_ipd_drughome,#my_procedure{
+    font-family: "Tahoma", "Cordia New";
     font-size: 16px;
 }
 #mydrugs tr,#my_lab tr,#my_cost tr,#my_ipd_drughome tr,#mydrugs td,#my_lab td,#my_cost td,#my_ipd_drug td,#my_ipd_drughome td,#my_procedure td,#my_ipd_dx td,#my_ipd_xray td,#my_ipd_proc td{
@@ -53,14 +62,14 @@
     height: 22px !important;
     /*display: inline-table;*/
     padding:0px !important;
-    font-family: "cordia new", "cordia new";
-    font-size: 16px;
+    font-family: "Tahoma", "Cordia New";
+    font-size: 14px;
 
 }
 #appoint,#labTest{
     padding:0px !important;
-    font-family: "cordia new", "cordia new";
-    font-size: 16px;
+    font-family: "Tahoma", "Cordia New";
+    font-size: 14px;
 }
 
 .main_content{
@@ -87,8 +96,8 @@
     height: 30px;
     margin: 2px;
     background: #DADADA;
-    font-family: tahoma, geneva, sans-serif;
-    font-size: 12px;
+    font-family: "Tahoma", "Cordia New";
+    font-size: 14px;
     color: #000066;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -124,7 +133,7 @@
 }
 .tab-content,.tab-pane{
     text-align: left;
-    font-family: tahoma, geneva, sans-serif;
+    font-family: "tahoma","Cordia New";
     font-size: 14px;
 
 }
@@ -161,13 +170,15 @@
 
 /*  Table  Visit Date  */
 table#table_h{
-    width:100%;
+    font-family: "Tahoma", "Cordia New";
+    font-size: 14px;
+    width: 100%;
 }
 table#table_h td{
-    white-space: nowrap;  /** added **/
+   /* white-space: nowrap;  /** added **/
 }
 table#table_h td:last-child{
-    width:100%;
+   /* width:100%;*/
 }
 
 /*****ipd******/
@@ -186,13 +197,16 @@ span.badge{
     padding-top: 0px;
     padding-bottom: 0px;
 
-    font-family: "cordia new", "cordia new";
-    font-size: 17px;
+    font-family: "Tahoma", "Cordia New";
+    font-size: 14px;
 
 }
 
-.editDx{
+.editDx,.editProc{
     padding-bottom: 1px;
     padding-top: 1px;
+    padding-right: 2px;
+    padding-left: 2px;
+    text-align: center;
     width: 50px;
 }

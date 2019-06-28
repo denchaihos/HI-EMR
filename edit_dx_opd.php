@@ -9,11 +9,11 @@ $icd10 = $_POST['icd10'];
 $icd10name = $_POST['icd10name'];
 
 
-$sql = "select id from ovstdx_original_dx where id=$id_dx";
+$sql = "select id from tsu_ovstdx_original where id=$id_dx";
 $result = mysql_query($sql);
 
 if (mysql_num_rows($result) == 0) {
-    $sql = "INSERT INTO ovstdx_original_dx (id,vn,icd10,icd10name,cnt,date_update,flag_status)
+    $sql = "INSERT INTO tsu_ovstdx_original
             SELECT *,now(),'up' from ovstdx where id=$id_dx";
     $result = mysql_query($sql);
     if($result)
@@ -28,12 +28,14 @@ if (mysql_num_rows($result) == 0) {
         else
         {
             echo "Update Error<br>";
+            echo mysql_error();
 
         }
     }
     else
     {
         echo "INsert Error<br>";
+        echo mysql_error();
 
     }
 }else{
@@ -46,6 +48,7 @@ if (mysql_num_rows($result) == 0) {
     else
     {
         echo "Update Error";
+        echo mysql_error();
 
     }
 }

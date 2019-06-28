@@ -3,21 +3,25 @@
  */
 
 /******************ER*******************/
-function getErData(){
-    var vn = $('input#vn_currentt').val();
+function getErData() {
+    var vn = vn_global_var;
 //alert(vn);
     $('div#er_result').empty();
-    $.get('get_emergency_data.php',{vn:vn}, function(data) {
-        $("#er_result").html(data);
-    });
+    if (vn) {
+        $.get('get_emergency_data.php', {vn: vn}, function (data) {
+            $("#er_result").html(data);
+        });
+    }
 
 }
-function getErProcedure(){
-    var vn = $('input#vn_currentt').val();
+function getErProcedure() {
+    var vn = vn_global_var;
 
     $('div#er_procedure').empty();
-    $.get('get_procedure_data.php',{vn:vn}, function(data) {
-        $("#er_procedure").html(data);
-    });
+    if (vn) {
+        $.get('get_proc_er_data.php', {vn: vn}, function (data) {
+            $("#er_procedure").html(data);
+        });
+    }
 
 }

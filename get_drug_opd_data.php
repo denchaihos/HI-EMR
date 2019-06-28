@@ -15,8 +15,9 @@ mysql_query("set character_set_client=utf8");
 $vn = $_GET['vn'];
 //$vn = 863114;
 $data = array();
-$sql = "SELECT pd.nameprscdt,pd.qty,m.doseprn1,m.doseprn2 from prsc p
+$sql = "SELECT pd.nameprscdt,pd.qty,m.doseprn1,m.doseprn2,mi.price,pd.charge from prsc p
 join prscdt pd on pd.prscno=p.prscno
+join meditem mi on mi.meditem=pd.meditem
 join medusage m on m.dosecode=pd.medusage
 where vn='$vn' and p.an = 0 GROUP BY pd.prscno,pd.meditem,pd.medusage  ";
 $data = array();
@@ -27,6 +28,8 @@ while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
     $row_array['qty'] = $row['qty'];
     $row_array['doseprn1'] = $row['doseprn1'];
     $row_array['doseprn2'] = $row['doseprn2'];
+    $row_array['price'] = $row['price'];
+    $row_array['charge'] = $row['charge'];
 
     array_push($data,$row_array);
 }

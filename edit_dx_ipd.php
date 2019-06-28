@@ -9,11 +9,11 @@ $icd10 = $_POST['icd10'];
 $icd10name = $_POST['icd10name'];
 
 
-$sql = "select id from iptdx_original_dx where id=$id_dx";
+$sql = "select id from tsu_iptdx_original where id=$id_dx";
 $result = mysql_query($sql);
 
 if (mysql_num_rows($result) == 0) {
-    $sql = "INSERT INTO iptdx_original_dx (id,an,itemno,icd10,icd10name,spclty,dct,date_update,flag_status)
+    $sql = "INSERT INTO tsu_iptdx_original (id,an,itemno,icd10,icd10name,spclty,dct,date_update,flag_status)
             SELECT *,now(),'up' from iptdx where id=$id_dx";
     $result = mysql_query($sql);
     if($result)

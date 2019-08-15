@@ -6,8 +6,10 @@ var an_global_var = '';
 var clinic = '';
 var id_dx = '';
 var dx_opd_pe_data ='';
+var history_vstdate_global = '';
 
 $(document).ready(function () {
+    
     $('#editDx').addClass('stopDisplay');
     $('#editProc').addClass('stopDisplay');
     //lert('me');
@@ -18,6 +20,22 @@ $(document).ready(function () {
             return false;
         }
     });
+    
+    var vn_fromEditDiag = $('input#vn_fromEditDiag').val();
+    var hn_fromEditDiag = $('input#hn_fromEditDiag').val();
+    
+    var hn = $('input#hn').val();
+    //alert('hn='+hn);
+  
+    if( hn === undefined ){
+        alert('Plaese Login');
+    }else if(hn == '' || hn === null){
+        console.log('login suuscces')
+    }else{
+        //alert(hn);
+        getVstdate();
+    }
+   
 
 });
 
@@ -102,8 +120,8 @@ function getVstdate() {
             $.each(data, function (key, value) {
                 if (value.an != 0) {
                     // $('td#vstdate').addClass('ipt_vstdate');
-                    $("tbody#visit_date").append("<tr>" +
-                        "<td id='vstdate'  class='ipt_vstdate'>" + value.vstdttm +
+                    $("tbody#visit_date").append("<tr style='cursor: pointer;'>" +
+                        "<td style='cursor: pointer;' id='vstdate'  class='ipt_vstdate'>" + value.vstdttm +
                         "<input type='hidden' name='vn' id='vn' value=" + value.vn + ">" +
                         "<input type='hidden' name='hn' id='hn' value=" + hn + ">" +
                         "<input type='hidden' name='an' id='an' value=" + value.an + ">" +
@@ -113,8 +131,8 @@ function getVstdate() {
                         "</tr>"
                     );
                 } else {
-                    $("tbody#visit_date").append("<tr>" +
-                        "<td id='vstdate' >" + value.vstdttm +
+                    $("tbody#visit_date").append("<tr style='cursor: pointer;'>" +
+                        "<td style='cursor: pointer;' id='vstdate' >" + value.vstdttm +
                         "<input type='hidden' name='vn' id='vn' value=" + value.vn + ">" +
                         "<input type='hidden' name='hn' id='hn' value=" + hn + ">" +
                         "<input type='hidden' name='an' id='an' value=" + value.an + ">" +
@@ -149,6 +167,7 @@ $('body').on('click', 'td#vstdate', function () {
     $(this).addClass('td_current');
 
     var history_vstdate = this.innerText;
+    history_vstdate_global = history_vstdate;
 
 
     //add  color with text  divide by opd  and ipd
@@ -223,6 +242,7 @@ function createBadges() {
 }
 
 function getLab(_callback) {
+    //alert('getlab');
     var vn = vn_global_var;
     //alert(vn);
     $('#lab_result').empty();
@@ -231,6 +251,7 @@ function getLab(_callback) {
             vn: vn
         }, function (data) {
             var array_len = data.length;
+            //alert(array_len);
             if (data != '') {
                 for (var j = 0; j < array_len; j++) {
 
@@ -353,11 +374,36 @@ function getAppointment() {
 }
 
 
-function printDiv(divName) {
+function printDiv(divName) {  
+  
+
      var printContents = $('div#summary').html();
      //alert(printContents);
-    var win = window.open("", "Title", "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=780,height=200,top="+(screen.height-400)+",left="+(screen.width-840));
-    win.document.body.innerHTML = ""+printContents+"";
+//     var win = window.open("", "Title", "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=780,height=200,top="+(screen.height-400)+",left="+(screen.width-840));
+
+//     var s = document.createElement("script");
+//     s.type = "text/javascript";
+//     s.src = "js/jquery-1.11.3.js";
+//    // win.$("head").append(s);
+//    win.document.head.append(s);
+
+//     var ss = document.createElement("script");
+//     ss.type = "text/javascript";
+//     ss.src = "js/bootstrap.min.js";
+//     //win.$("head").append(ss);
+//     win.document.head.append(ss);
+
+//     win.document.head.append('<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />');
+
+//     win.document.body.innerHTML = ""+printContents+"";
+
+var win = window.open('','printwindow');
+win.document.write('<html><head><title>โรงพยาบาลทุ่งศรีอุดม</title><link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"><link href="fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet"></head><body>');
+win.document.write($("#content").innerHTML = printContents);
+
+win.document.write('</body></html>');
+//win.document.body.innerHTML = ""+printContents+"";
+
     win.print();
     
 }
@@ -527,6 +573,7 @@ function delProcedure(id) {
 }
 
 function updateProc(ptType) {
+    console.log(id_dx);
     //var me = $('button#saveEditProc').attr('onclick');
     //alert(id_dx);
     if (id_dx == 'addProc') {
@@ -996,9 +1043,16 @@ function set_icd9ttmname(val) {
 }
 
 function setProc(valRadio) {
+    console.log('me');
     //alert(valRadio.getAttribute('data-icd9'));
     $('input#icd9ttmname').val(valRadio.getAttribute('data-icd9'));
     $('input#codeicd9id').val(valRadio.getAttribute('data-codeicd9id'));
     $('input#icd9price').val(valRadio.value);
 
+}
+function printPrb(){
+    var hn = $("input#hn").val();
+    var visit_date = history_vstdate_global.substring(0,10);
+
+    window.open('printDoc/viewprb.php?adate='+visit_date+'&hn='+hn) ;
 }

@@ -164,7 +164,15 @@ header('Content-Type: text/html; charset=utf-8');
         date_default_timezone_set("Asia/Bangkok");
 
         if(!isset($_SESSION["fullname"])){
-            echo "<div class='container'><img src='images/emr.jpg'></div>";
+            if(isset($_GET["vn"])){
+                include "pt_history_form.php";
+                
+            }else{
+echo $_GET["vn"];
+                echo "<div class='container'><img src='images/emr.jpg'></div>";
+
+            }
+            
             //exit(0);
         }else{
 

@@ -49,12 +49,12 @@
                             <br>
                             <div class="input-group">
 <!--                                <span class="input-group-addon" id="basic-addon1">ICD9TTMNAME</span>-->
-                                <input type="hidden" id="icd9ttmname" class="form-control" placeholder=""  onKeyPress="return tabE(this,event)">
+                                <input type="text" id="icd9ttmname" class="form-control" placeholder=""  onKeyPress="return tabE(this,event)">
                             </div>
                             <div class="input-group">
 <!--                                <span class="input-group-addon" id="basic-addon1">ICD9 PRICE</span>-->
-                                <input type="hidden" id="icd9price" class="form-control" placeholder=""  onKeyPress="return tabE(this,event)">
-                                <input type="hidden" id="codeicd9id" class="form-control" placeholder=""  onKeyPress="return tabE(this,event)">
+                                <input type="text" id="icd9price" class="form-control" placeholder=""  onKeyPress="return tabE(this,event)">
+                                <input type="text" id="codeicd9id" class="form-control" placeholder=""  onKeyPress="return tabE(this,event)">
                             </div>
                             <br>
                             <button type="button" id="saveEditProc" class="btn btn-success btn-block" >บันทึก</button>
@@ -65,7 +65,8 @@
             </div>
         </div>
     </div>
-    <div class="modal-content stopDisplay" id="summary">
+    <div class="modal-content stopDisplay" id="summary" >
+        <div style="border:solid;margin:5px;padding:3px">
         <div class="modal-header">
             <!-- <button type="button" class="close" data-dismiss="modal"><span class="sr-only">Close</span></button> -->
             <h4 class="modal-title" id="myModalLabel"> เวชระเบียนผู้ป่วยนอก โรงพยาบาลทุ่งศรีอุดม จังหวัดอุบลราชธานี</h4>
@@ -78,27 +79,34 @@
                     <div class="well" id="inform_data">
                         inform_data
                     </div>
+                    <hr>
                     <h4>ข้อมูลซักประวัติ</h4>
                     <div class="col-xs-12 well" id="chief_complain">
                         chief_complain
                     </div>
+                    <hr>
                     <h4>การตรวจของแพทย์</h4>
                     <div class="col-xs-12 well" id="dx_pe_opd">
                         dx_pe_opd
                     </div>
+                    <hr>
                     <h4>ยาผู้ป่วยนอก</h4>
                     <div class="col-xs-12 well" id="modal_drug_opd">
                         drug
                     </div>
+                    <hr>
                     <div class="col-xs-6"><h4>LAB</h4></div>
+
                     <div class="col-xs-6"><h4>XRAY</h4></div>
                     <div class="col-xs-6 well" id="modal_lab_opd">
                         lab
                     </div>
+                    <hr>
                     <div class="col-xs-6 well" id="modal_xray_opd">
                         xray
                     </div> 
-                    <br>                   
+                    <hr>
+                                     
                     
                     <div class="col-xs-12 well" id="modal_cost_opd">
                         cost_opd
@@ -106,6 +114,7 @@
 
                 </div>
             </div>
+        </div>
         </div>
         <button type="button" class="btn btn-default" onclick="printDiv(summary)">พิมพ์</button>
     </div>

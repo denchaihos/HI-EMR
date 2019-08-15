@@ -1,0 +1,13 @@
+@page {
+    size: A4;
+    margin: 8px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 12px;
+  }
+  @media print {
+    html, body {
+      width: 210mm;
+      height: 297mm;
+    }
+    /* ... the rest of the rules ... */
+  }

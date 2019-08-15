@@ -36,11 +36,12 @@
                     <div class="form-group">
                         <label for="hnn">Patient EMR::</label>
                         <label for="hn">HN::</label>
-                        <input type="text" name="hn" class="form-control" id="hn" >
+                        <input type="text" name="hn" class="form-control" id="hn"  value="<?php echo (isset($_GET['hn']) ? $_GET['hn'] : ""); ?>">
                     </div>
                     <button type="button" class="btn btn-default" onclick="getVstdate();getPtInform();">ตกลง</button>
                     <!-- <button type="button" class="btn btn-default" onclick="getInform_Data()">พิมพ์</button> -->
-                    <button type="button" class="btn btn-default" onclick="popupSummaryData('show')">พิมพ์</button>
+                    <button type="button" class="btn btn-default" onclick="popupSummaryData('show')">พิมพ์ประวัติ</button>
+                    <button type="button" class="btn btn-default" onclick="printPrb()">พิมพ์ค่าใช้จ่าย</button>
                    
                     
 
@@ -129,7 +130,7 @@
 
 
                                                 <li nav-item>
-                                                    <a href="#lab" role="tab" data-toggle="tab" onclick="getLab()">
+                                                    <a href="#my_opd_lab" role="tab" data-toggle="tab" onclick="getLab()">
                                                         <i class="fa fa-flask"></i> ผลชัณสูตร
                                                         <span class="badge" id="lab_badge"></span>
                                                     </a>
@@ -335,6 +336,8 @@
         </div>
     </div>
     <input type="hidden" name="vn" id="vn_currentt" >
+    <input type="text" name="vn_fromEditDiag" id="vn_fromEditDiag" value="<?php echo $_GET['vn'] ?>">
+    <input type="text" name="hn_fromEditDiag" id="hn_fromEditDiag" value="<?php echo $_GET['hn'] ?>">
 
 
 

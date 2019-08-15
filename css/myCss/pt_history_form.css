@@ -141,6 +141,13 @@
     background-color: #e38d13;
 }
 
+tbody#visit_date tr{
+    cursor: pointer;cursor: hand;
+}
+td#vstdate{
+    cursor: pointer;cursor: hand;
+}
+
 /*table overflow scroll*/
 #table-wrapper {
     position:relative;

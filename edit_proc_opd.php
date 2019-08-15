@@ -13,7 +13,7 @@ $sql = "select id from tsu_oprt_original where id=$id_dx";
 $result = mysql_query($sql);
 
 if (mysql_num_rows($result) == 0) {
-    $sql = "INSERT INTO tsu_oprt_original (id,vn,opdttm,an,icd9cm,icd9name,dct,orno,charge,oppnote,rcptno,codeicd9id,date_update,flag_status)
+    $sql = "INSERT INTO tsu_oprt_original (id,vn,opdttm,an,icd9cm,icd9name,dct,orno,charge,oppnote,rcptno,codeicd9id,qty,date_update,flag_status)
             SELECT *,now(),'up' from oprt where id=$id_dx";
     $result = mysql_query($sql);
     if($result)
@@ -34,6 +34,7 @@ if (mysql_num_rows($result) == 0) {
     else
     {
         echo "INsert Error<br>";
+        echo $id_dx;
 
     }
 }else{

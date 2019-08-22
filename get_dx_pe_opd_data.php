@@ -48,7 +48,7 @@ if ($numrows > 0) {
     $sql = "select o.id,if(o.cnt=1,'PDX','Other') as dxtype,o.icd10,i.icd10name,i.name_t,concat(d.fname,' ' ,d.lname) as doctor "
         . " from  ovstdx o left outer join icd101  i on i.icd10=o.icd10 "
         . " JOIN ovst ot on ot.vn=o.vn "
-        . " left JOIN dct d on d.lcno=ot.dct"
+        . " left JOIN dct d on d.lcno=ot.dct  "
         . " where o.vn=" . $vn . " ORDER BY o.cnt desc ";
 
 

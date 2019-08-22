@@ -83,7 +83,7 @@ $sql = $sql." concat( date_format(o.vstdttm,'%d/%m/'),year(o.vstdttm)+543,date_f
 $sql = $sql." if(o.an=0,concat(date_format((select max(srvdttm) from hi.ovstdr where o.vn=ovstdr.vn),'%d/%m/'),(select year(max(srvdttm)) from hi.ovstdr where o.vn=ovstdr.vn)+543, ";
 $sql = $sql." date_format((select max(srvdttm) from hi.ovstdr where o.vn=ovstdr.vn),' เวลา %H.%i น.')), ";
 $sql = $sql." concat(date_format(ipt.dchdate,'%d/%m/'),year(ipt.dchdate)+543,' ', date_format(time(dchtime*100),' เวลา %H.%i น.'))) as dcdate, ifnull(ipt.daycnt,'-') as losd, ";
-$sql = $sql." (select namehosp from hi.insure inner join hi.hospcode on insure.hospmain=hospcode.off_id where o.hn=insure.hn and o.pttype=insure.pttype and insure.dateexp >= date(o.vstdttm) order by notedate desc limit 1) as hmain,";
+$sql = $sql." (select namehosp from hi.insure inner join hi.hospcode on insure.hospmain=hospcode.off_id where o.hn=insure.hn and o.pttype=insure.pttype and insure.dateexp >= o.vstdttm order by notedate desc limit 1) as hmain,";
 $sql = $sql." sum(case i.income when '01' then i.rcptamt else 0 end) as c1,sum(case i.income when '02' then i.rcptamt else 0 end) as c2,sum(case i.income when '03' then i.rcptamt else 0 end) as c3, ";
 $sql = $sql." sum(case i.income when '04' then i.rcptamt else 0 end) as c4,sum(case when i.income='05' and cgd not in (55020,55021) then i.rcptamt else 0 end) as c5,sum(case i.income when '06' then i.rcptamt else 0 end) as c6, ";
 $sql = $sql." sum(case i.income when '07' then i.rcptamt else 0 end) as c7,sum(case i.income when '08' then i.rcptamt else 0 end) as c8,sum(case i.income when '09' then i.rcptamt else 0 end) as c9, ";
@@ -97,25 +97,25 @@ $sql = $sql." from hi.ovst as o inner join hi.pt as p on o.hn=p.hn  and o.hn=".$
 $sql = $sql." inner join hi.male on p.male=male.male left join hi.iptdx as x on ipt.an=x.an and x.itemno=1 inner join hi.icd101 as c on if(o.an=0,ox.icd10=c.icd10,x.icd10=c.icd10) inner join hi.incoth as i on o.vn=i.vn ";
 $sql = $sql." left join hi.dchtype on ipt.dchtype=dchtype.dchtype left join hi.mrtlst on p.mrtlst=mrtlst.mrtlst  left join hi.occptn as j on p.occptn=j.occptn left join hi.ovstost on o.ovstost=ovstost.ovstost ";
 $sql = $sql." left join hi.dct on (CASE WHEN LENGTH(o.dct) = 5 THEN dct.lcno = o.dct 	WHEN LENGTH(o.dct) = 4 THEN dct.dct = substr(o.dct,3,2)  WHEN LENGTH(o.dct) = 2 THEN dct.dct = o.dct END ) ";
-$sql = $sql." where o.hn= " . $_GET["hn"] . " and if(o.an=0,date(o.vstdttm) = '" . $_GET["adate"] . "',ipt.rgtdate='". $_GET["adate"] ."') group by o.vn" ;
+$sql = $sql." where o.hn= " . $_GET["hn"] . " and if(o.an=0,o.vstdttm = '" . $_GET["adate"] . "',ipt.rgtdate='". $_GET["adate"] ."') group by o.vn" ;
 
 
 $proc = "select  concat(p.icd9name,'(',d.cgd,')') as item,if(p.qty=0,count(d.id),qty) as qty,d.pricecgd as unit_price,if(p.qty=0,sum(p.charge),p.charge) as total from  hi.ovst as o ";
-$proc = $proc." inner join hi.oprt as p on o.vn=p.vn  inner join hi.prcd as d on p.codeicd9id=d.id where hn = " . $_GET["hn"] ." and date(o.vstdttm) ='" . $_GET["adate"] ."'  group by d.id";
+$proc = $proc." inner join hi.oprt as p on o.vn=p.vn  inner join hi.prcd as d on p.codeicd9id=d.id where hn = " . $_GET["hn"] ." and o.vstdttm ='" . $_GET["adate"] ."'  group by d.id";
 $proc = $proc." union ";
 $proc = $proc."select concat(b.labname,'(',b.cgd,')') as item,count(l.ln) as qty,b.pricelab as unit_price,sum(b.pricelabcgd) as total from hi.ovst as o inner join hi.incoth as i on o.vn=i.vn and i.income='01' ";
-$proc = $proc."inner join hi.lbbk as l on i.codecheck=l.ln inner join hi.lab as b on l.labcode =b.labcode where o.hn=" . $_GET["hn"] ." and date(o.vstdttm) ='" . $_GET["adate"] ."' group by b.labcode";
+$proc = $proc."inner join hi.lbbk as l on i.codecheck=l.ln inner join hi.lab as b on l.labcode =b.labcode where o.hn=" . $_GET["hn"] ." and o.vstdttm ='" . $_GET["adate"] ."' group by b.labcode";
 $proc = $proc." union ";
 $proc = $proc." select concat(b.xryname,'(',b.cgd,')') as item,count(x.xan) as qty,b.pricexry as unit_price,sum(b.pricexry) as total from hi.ovst as o inner join hi.incoth as i on o.vn=i.vn and i.income='02'";
-$proc = $proc." inner join hi.xryrgt as x on substr(i.codecheck,2,5)=x.xan inner join hi.xray as b on x.xrycode =b.xrycode where o.hn=" . $_GET["hn"] ." and date(o.vstdttm) ='" . $_GET["adate"] ."' group by b.xrycode ";
+$proc = $proc." inner join hi.xryrgt as x on substr(i.codecheck,2,5)=x.xan inner join hi.xray as b on x.xrycode =b.xrycode where o.hn=" . $_GET["hn"] ." and o.vstdttm ='" . $_GET["adate"] ."' group by b.xrycode ";
 $proc = $proc." union ";
 $proc = $proc." select m.`name` as item,sum(d.qty) as qty,m.price as unit_price,sum(d.charge) as total from hi.ovst as o inner join hi.incoth as i on o.vn=i.vn and i.income='08' ";
 $proc = $proc." inner join hi.prsc as p on substr(i.codecheck,2,8)=p.prscno inner join hi.prscdt as d on p.prscno=d.prscno inner join hi.meditem as m on d.meditem=m.meditem and m.type != 1 ";
-$proc = $proc." where o.hn=" . $_GET["hn"] ." and date(o.vstdttm) ='" . $_GET["adate"] ."'  group by m.meditem";
+$proc = $proc." where o.hn=" . $_GET["hn"] ." and o.vstdttm ='" . $_GET["adate"] ."'  group by m.meditem";
 
 $drug = " select m.`name` as item,sum(d.qty) as qty,m.price as unit_price,sum(d.charge) as total from hi.ovst as o inner join hi.incoth as i on o.vn=i.vn and i.income='08' ";
 $drug = $drug." inner join hi.prsc as p on substr(i.codecheck,2,8)=p.prscno inner join hi.prscdt as d on p.prscno=d.prscno inner join hi.meditem as m on d.meditem=m.meditem and m.type = 1 ";
-$drug = $drug." where o.hn=" . $_GET["hn"] ." and date(o.vstdttm) ='" . $_GET["adate"] ."'  group by m.meditem";
+$drug = $drug." where o.hn=" . $_GET["hn"] ." and o.vstdttm ='" . $_GET["adate"] ."'  group by m.meditem";
 
 // mysql_query("SET NAMES TIS620");
 mysqli_query($conn, "SET NAMES UTF8");
@@ -197,7 +197,7 @@ echo "<tr><td align='center'>".$n."</td><td>ค่าบริการทาง
     <div align="center">  &nbsp &nbsp ลงชื่อ ...................................... ผู้ตรวจสอบ </div>
     <div align="center">(นายอนุชา  แสงหิรัญ)   </div>
     <div align="center">นักวิชาการสาธารณสุขปฏิบัติการ<br>
-    หัวหน้ากลุ่มงานยุทธศาสตร์สาธารณสุขและประกันสุขภาพ  </div>
+    หัวหน้ากลุ่มงานประกันสุขภาพ ยุทธศาสตร์และสารสนเทศทางการแพทย์  </div>
     </div>
 </p>
 <p style="page-break-after: always;"></p>

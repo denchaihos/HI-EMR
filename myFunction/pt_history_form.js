@@ -1052,7 +1052,8 @@ function setProc(valRadio) {
 }
 function printPrb(){
     var hn = $("input#hn").val();
-    var visit_date = history_vstdate_global.substring(0,10);
+    var visit_date = history_vstdate_global.substring(0,19);
+    //alert(visit_date);
 
     window.open('printDoc/viewprb.php?adate='+visit_date+'&hn='+hn) ;
 }

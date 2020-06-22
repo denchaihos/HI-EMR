@@ -5,56 +5,58 @@ var vn_global_var = '';
 var an_global_var = '';
 var clinic = '';
 var id_dx = '';
-var dx_opd_pe_data ='';
+var dx_opd_pe_data = '';
 var history_vstdate_global = '';
+var ptType_global_var = '';
 
-$(document).ready(function () {
-    
+$(document).ready(function() {
+
     $('#editDx').addClass('stopDisplay');
     $('#editProc').addClass('stopDisplay');
     //lert('me');
-    $("input#hn").keypress(function (e) {
+    $("input#hn").keypress(function(e) {
         var code = (e.keyCode ? e.keyCode : e.which);
         if (code == 13) { //Enter keycode
             code = 9;
             return false;
         }
     });
-    
+
     var vn_fromEditDiag = $('input#vn_fromEditDiag').val();
     var hn_fromEditDiag = $('input#hn_fromEditDiag').val();
-    
+
     var hn = $('input#hn').val();
     //alert('hn='+hn);
-  
-    if( hn === undefined ){
+
+    if (hn === undefined) {
         alert('Plaese Login');
-    }else if(hn == '' || hn === null){
+    } else if (hn == '' || hn === null) {
         console.log('login suuscces')
-    }else{
+    } else {
         //alert(hn);
         getVstdate();
     }
-   
+
 
 });
 
-$(document).keyup(function (e) {
+$(document).keyup(function(e) {
     if ($("input#hn").is(":focus") && (e.keyCode == 13)) {
         getVstdate();
     }
 });
+
 function DateThai(strtDate) {
-    var strDate =  new Date(strtDate);
+    var strDate = new Date(strtDate);
     var strDay = strDate.getDate();
-    var strYear = strDate.getFullYear()+543;     
-    var strMonth = strDate.getMonth()+1;
+    var strYear = strDate.getFullYear() + 543;
+    var strMonth = strDate.getMonth() + 1;
     var strMonthCut = Array("", "ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค.");
     var strMonthThai = strMonthCut[strMonth];
     // var strTime = dateFormat(strDate, "h:MM:ss TT");
     var strTime = strDate.format("hh:MM:ss");
     //alert(strTime);
-    return strDay +" "+strMonthThai +" "+strYear+" "+strTime;
+    return strDay + " " + strMonthThai + " " + strYear + " " + strTime;
 }
 
 function age(dob, today) {
@@ -63,7 +65,7 @@ function age(dob, today) {
             years: 0,
             months: 0,
             days: 0,
-            toString: function () {
+            toString: function() {
                 return (this.years ? this.years + ' ปี ' : '') +
                     (this.months ? this.months + ' เดือน ' : '') +
                     (this.days ? this.days + ' วัน' : '');
@@ -115,9 +117,9 @@ function getVstdate() {
     $('div#cost_result').empty();
     $.getJSON('get_vstdate.php', {
         hn: hn
-    }, function (data) {
+    }, function(data) {
         if (data) {
-            $.each(data, function (key, value) {
+            $.each(data, function(key, value) {
                 if (value.an != 0) {
                     // $('td#vstdate').addClass('ipt_vstdate');
                     $("tbody#visit_date").append("<tr style='cursor: pointer;'>" +
@@ -152,7 +154,7 @@ function getVstdate() {
 }
 
 
-$('body').on('click', 'td#vstdate', function () {
+$('body').on('click', 'td#vstdate', function() {
     clearBadges();
     $('ul.nav.nav-tabs a:first').tab('show'); // Select first tab
     var vn = $(this).find('input#vn').val();
@@ -161,7 +163,8 @@ $('body').on('click', 'td#vstdate', function () {
     var an = $(this).find('input#an').val();
     an_global_var = an;
     vn_global_var = vn;
-
+    // alert(vn);
+    $("a#printopd").attr("href", "http://192.168.10.15/application/ipd/web/index.php?r=opd%2Fprint&id=" + vn + "");
     //getPtInform(hn);
     $('td#vstdate').removeClass('td_current');
     $(this).addClass('td_current');
@@ -181,7 +184,7 @@ $('body').on('click', 'td#vstdate', function () {
     //var hn = $('#hnn').val();
     $.get('get_screening_data.php', {
         vn: vn
-    }, function (data) {
+    }, function(data) {
         //alert(data);
         $("div#screening_data").html(data);
     });
@@ -197,7 +200,7 @@ function getPtInform() {
     var hn = $('input#hn').val();
     $.get('get_pt_information.php', {
         hn: hn
-    }, function (data) {
+    }, function(data) {
         if (data) {
             $("#general_inform").html(data);
         } else {
@@ -224,8 +227,8 @@ function createBadges() {
     if (vn) {
         $.getJSON('badges.php', {
             vn: vn
-        }, function (data) {
-            $.each(data, function (key, value) {
+        }, function(data) {
+            $.each(data, function(key, value) {
                 $('span#inform_badge').text(value.inform);
                 $('span#doctor_badge').text(value.doctor);
                 $('span#drug_badge').text(value.drug);
@@ -249,7 +252,7 @@ function getLab(_callback) {
     if (vn) {
         $.getJSON('get_lab_data.php', {
             vn: vn
-        }, function (data) {
+        }, function(data) {
             var array_len = data.length;
             //alert(array_len);
             if (data != '') {
@@ -271,15 +274,15 @@ function getLab(_callback) {
                     }
                     //for (var k = 5; k < num_result; k++) {
                     $('tbody#lab_result').append(
-                        "<tr>" +
-                        "<td>" + labName + "</td>" +
-                        "<td>" + labResult + "</td>" +
-                        "<td>" + normalValue + "</td>" +
-                        "<td>" + Unit + "</td>" +
-                        "</tr>"
+                            "<tr>" +
+                            "<td>" + labName + "</td>" +
+                            "<td>" + labResult + "</td>" +
+                            "<td>" + normalValue + "</td>" +
+                            "<td>" + Unit + "</td>" +
+                            "</tr>"
 
-                    )
-                    // }
+                        )
+                        // }
 
                 }
             }
@@ -295,9 +298,9 @@ function getDrugOpd(_callback) {
     if (vn) {
         $.getJSON('get_drug_opd_data.php', {
             vn: vn
-        }, function (data) {
+        }, function(data) {
             $x = 1;
-            $.each(data, function (key, value) {
+            $.each(data, function(key, value) {
                 $("tbody#my_drugs").append("<tr>" +
                     "<td>" + $x + "</td>" +
                     "<td>" + value.nameprscdt + "</td>" +
@@ -309,7 +312,7 @@ function getDrugOpd(_callback) {
                 );
                 $x++;
             });
-            _callback();           
+            _callback();
         });
     }
 }
@@ -320,8 +323,8 @@ function getXray(_callback) {
     if (vn) {
         $.getJSON('get_xray_data.php', {
             vn: vn
-        }, function (data) {
-            $.each(data, function (key, value) {
+        }, function(data) {
+            $.each(data, function(key, value) {
                 $('div#xray_result').append(
                     "<p>" + value.xryname + "</p>"
                 )
@@ -337,7 +340,7 @@ function getCost(_callback) {
         $('div#cost_result').empty();
         $.get('get_cost_data.php', {
             vn: vn
-        }, function (data) {
+        }, function(data) {
             $("#cost_result").html(data);
             _callback();
 
@@ -351,7 +354,7 @@ function getLabTest() {
     if (vn) {
         $.get('get_lab_send.php', {
             vn: vn
-        }, function (data) {
+        }, function(data) {
             $("#lab_test").html(data);
 
 
@@ -366,7 +369,7 @@ function getAppointment() {
     if (vn) {
         $.get('get_appointment_data.php', {
             'vn': vn
-        }, function (data) {
+        }, function(data) {
             $("#appointment_data").html(data);
         });
     }
@@ -374,47 +377,47 @@ function getAppointment() {
 }
 
 
-function printDiv(divName) {  
-  
+function printDiv(divName) {
 
-     var printContents = $('div#summary').html();
-     //alert(printContents);
-//     var win = window.open("", "Title", "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=780,height=200,top="+(screen.height-400)+",left="+(screen.width-840));
 
-//     var s = document.createElement("script");
-//     s.type = "text/javascript";
-//     s.src = "js/jquery-1.11.3.js";
-//    // win.$("head").append(s);
-//    win.document.head.append(s);
+    var printContents = $('div#summary').html();
+    //alert(printContents);
+    //     var win = window.open("", "Title", "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=780,height=200,top="+(screen.height-400)+",left="+(screen.width-840));
 
-//     var ss = document.createElement("script");
-//     ss.type = "text/javascript";
-//     ss.src = "js/bootstrap.min.js";
-//     //win.$("head").append(ss);
-//     win.document.head.append(ss);
+    //     var s = document.createElement("script");
+    //     s.type = "text/javascript";
+    //     s.src = "js/jquery-1.11.3.js";
+    //    // win.$("head").append(s);
+    //    win.document.head.append(s);
 
-//     win.document.head.append('<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />');
+    //     var ss = document.createElement("script");
+    //     ss.type = "text/javascript";
+    //     ss.src = "js/bootstrap.min.js";
+    //     //win.$("head").append(ss);
+    //     win.document.head.append(ss);
 
-//     win.document.body.innerHTML = ""+printContents+"";
+    //     win.document.head.append('<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />');
 
-var win = window.open('','printwindow');
-win.document.write('<html><head><title>โรงพยาบาลทุ่งศรีอุดม</title><link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"><link href="fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet"></head><body>');
-win.document.write($("#content").innerHTML = printContents);
+    //     win.document.body.innerHTML = ""+printContents+"";
 
-win.document.write('</body></html>');
-//win.document.body.innerHTML = ""+printContents+"";
+    var win = window.open('', 'printwindow');
+    win.document.write('<html><head><title>โรงพยาบาลทุ่งศรีอุดม</title><link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"><link href="fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet"></head><body>');
+    win.document.write($("#content").innerHTML = printContents);
+
+    win.document.write('</body></html>');
+    //win.document.body.innerHTML = ""+printContents+"";
 
     win.print();
-    
+
 }
 
 //create alert  dialog  myAlert name global
 alertify.myAlert || alertify.dialog('myAlert', function factory() {
     return {
-        main: function (content) {
+        main: function(content) {
             this.setContent(content);
         },
-        setup: function () {
+        setup: function() {
             return {
                 options: {
                     modal: false,
@@ -434,10 +437,10 @@ alertify.myAlert || alertify.dialog('myAlert', function factory() {
 function setConfig() {
     $.ajax({
         url: 'edit_config.php'
-    }).success(function (data) {
+    }).success(function(data) {
         alertify.myAlert(data).set('resizable', true).resizeTo('50%', '85%');
         $('td#vstdate:first').trigger('click');
-    }).error(function () {
+    }).error(function() {
         alertify.error('Errro loading external file.');
     });
 }
@@ -446,8 +449,17 @@ function setConfig() {
 
 function updateDx(ptType) {
     var vn = vn_global_var;
+    //alert(an_global_var);
+
     if (id_dx == 'addDx') {
-        var url = 'add_dx_opd.php';
+        if (ptType == 'opd') {
+            var url = 'add_dx_opd.php';
+        } else if (ptType == 'ipd') {
+            var url = 'add_dx_ipd.php';
+            var vn = an_global_var;
+        } else {
+            var url = 'add_dx_dental.php';
+        }
     } else {
         if (ptType == 'opd') {
             var url = 'edit_dx_opd.php';
@@ -457,10 +469,11 @@ function updateDx(ptType) {
             var url = 'edit_dx_dental.php';
         }
     }
+    //alert(ptType);
     var icd10 = $('input#icd10').val();
     var icd10name = $('input#icd10name').val();
     if (icd10name.length == 0 || icd10name == "ICD10 is not valid") {
-        alertify.error('คำแนะนำ', 'ICD10 ไม่ถูกต้อง', function () {
+        alertify.error('คำแนะนำ', 'ICD10 ไม่ถูกต้อง', function() {
             alertify.success('!Error');
         });
     } else {
@@ -480,13 +493,17 @@ function updateDx(ptType) {
                 'Expires': '0'
             },
             cache: false
-        }).success(function (data) {
+        }).success(function(data) {
             //alert(url);
             if (data.match('Success')) {
                 closeDialog();
                 alertify.success(data);
                 if (id_dx == 'addDx') {
-                    getDxPeOpdData();
+                    if (ptType == 'opd') {
+                        getDxPeOpdData();
+                    } else {
+                        getDx_ProcIpd();
+                    }
                 } else {
                     $('button#' + id_dx).html(icd10);
                     if (ptType == 'opd') {
@@ -505,7 +522,7 @@ function updateDx(ptType) {
             } else {
                 alertify.error('Not Success');
             }
-        }).error(function () {
+        }).error(function() {
             alertify.error('Errro .');
             alert(url);
 
@@ -514,9 +531,15 @@ function updateDx(ptType) {
 }
 
 function delDx(id) {
-    //    alert(id);
+
+    if (ptType_global_var == 'ipd') {
+        var url = 'del_dx_ipd.php';
+    } else {
+        var url = 'del_dx_opd.php';
+    }
+    alert(url);
     $.ajax({
-        url: 'del_dx_opd.php',
+        url: url,
         type: "POST",
         data: {
             'id_dx': id
@@ -528,23 +551,32 @@ function delDx(id) {
             'Expires': '0'
         },
         cache: false
-    }).success(function (data) {
+    }).success(function(data) {
 
         if (data.match('Success')) {
-            getDxPeOpdData();
+            if (ptType_global_var == 'ipd') {
+                getDx_ProcIpd();
+            } else {
+                getDxPeOpdData();
+            }
             alertify.success(data);
         } else {
             alertify.error(data);
         }
-    }).error(function () {
+    }).error(function() {
         alertify.error('Errro loading external file.');
     });
 }
 
 function delProcedure(id) {
+    if (ptType_global_var == 'ipd') {
+        var url = 'del_proc_ipd.php';
+    } else {
+        var url = 'del_proc_opd.php';
+    }
     //alert(id);
     $.ajax({
-        url: 'del_proc_opd.php',
+        url: url,
         type: "POST",
         data: {
             'id_dx': id
@@ -556,54 +588,69 @@ function delProcedure(id) {
             'Expires': '0'
         },
         cache: false,
-        success: function (response) {
+        success: function(response) {
             console.log(response);
         }
-    }).success(function (data) {
+    }).success(function(data) {
 
         if (data.match('Success')) {
-            getDxPeOpdData();
+            if (ptType_global_var == 'ipd') {
+                getDx_ProcIpd();
+            } else {
+                getDxPeOpdData();
+            }
             alertify.success(data);
         } else {
             alertify.error(data);
         }
-    }).error(function () {
+    }).error(function() {
         alertify.error('Errro.');
     });
 }
 
 function updateProc(ptType) {
-    console.log(id_dx);
+    //console.log(id_dx);
     //var me = $('button#saveEditProc').attr('onclick');
     //alert(id_dx);
+    //alert(an_global_var);
     if (id_dx == 'addProc') {
-        var url = 'add_proc_opd.php';
+        if (ptType_global_var == 'ipd') {
+            alert('addProcIpd');
+            var url = 'add_proc_ipd.php';
+            var an = an_global_var;
+        } else {
+            var url = 'add_proc_opd.php';
+            var an = '';
+        }
     } else {
         if (ptType == 'opd') {
             var url = 'edit_proc_opd.php';
+            var an = '';
         } else if (ptType == 'ipd') {
             var url = 'edit_proc_ipd.php';
+            var an = an_global_var;
         } else {
             var url = 'edit_proc_dental.php';
+            var an = '';
         }
     }
     var vn = vn_global_var;
+
     var icd9ttm = $('input#icd9ttm').val();
     var icd9ttmname = $('input#icd9ttmname').val();
     var icd9price = $('input#icd9price').val();
     var codeicd9id = $('input#codeicd9id').val();
     if (icd9ttmname.length == 0 || icd9ttmname == "ICD is not valid") {
-        alertify.alert('คำแนะนำ', 'ICD ไม่ถูกต้อง', function () {
+        alertify.alert('คำแนะนำ', 'ICD ไม่ถูกต้อง', function() {
             alertify.success('Ok');
         });
     } else {
-        //alert(icd9price);
-        //alert(vn);
         $.ajax({
             url: url,
             type: "POST",
             data: {
                 'vn': vn,
+                'an': an,
                 'id_dx': id_dx,
                 'icd9ttm': icd9ttm,
                 'icd9ttmname': icd9ttmname,
@@ -617,19 +664,21 @@ function updateProc(ptType) {
                 'Expires': '0'
             },
             cache: false,
-            success: function (response) {
+            success: function(response) {
                 console.log(response);
             }
 
-        }).success(function (data) {
+        }).success(function(data) {
             if (data.match('Success')) {
                 closeDialog();
                 alertify.success(data);
-                getDxPeOpdData();
+
                 if (ptType == 'opd') {
+                    getDxPeOpdData();
                     $('button#' + id_dx).html(icd9ttm);
                     $('button#' + id_dx).parent().next('td').text(icd9ttmname);
                 } else if (ptType == 'ipd') {
+                    getDx_ProcIpd();
                     $('button#' + id_dx).html(icd9ttm);
                     $('button#' + id_dx).parent().next('td').text(icd9ttmname);
                 } else {
@@ -642,7 +691,7 @@ function updateProc(ptType) {
 
             }
 
-        }).error(function () {
+        }).error(function() {
             alert(id_dx);
             alertify.error('Errro loading external file.');
         });
@@ -654,7 +703,7 @@ function test() {
 }
 
 function getDxPeOpdData(_callback) {
-    var vn = vn_global_var;    
+    var vn = vn_global_var;
     clinic = 'opd';
     $('button#saveEditDx').attr('onClick', "updateDx('opd')");
     $('button#saveEditProc').attr('onClick', "updateProc('opd')");
@@ -662,14 +711,14 @@ function getDxPeOpdData(_callback) {
     if (vn) {
         $.get('get_dx_pe_opd_data.php', {
             'vn': vn_global_var
-        }, function (data) {
-            dx_opd_pe_data = data; 
-            $("#dx_opd").html(data);      
-            _callback();            
-           
+        }, function(data) {
+            dx_opd_pe_data = data;
+            $("#dx_opd").html(data);
+            _callback();
+
         });
     }
-   
+
 
 }
 
@@ -681,15 +730,15 @@ function closeDialog() {
 
 function dialogshow(id) {
 
-    alertify.genericDialog1327195 || alertify.dialog('genericDialog1327195', function () {
+    alertify.genericDialog1327195 || alertify.dialog('genericDialog1327195', function() {
         return {
-            main: function (content) {
+            main: function(content) {
                 this.setContent(content);
             },
-            setup: function () {
+            setup: function() {
                 return {
                     focus: {
-                        element: function () {
+                        element: function() {
                             return this.elements.body.querySelector(this.get('selector'));
                         },
                         select: true
@@ -716,16 +765,16 @@ function dialogshow(id) {
                     }
                 };
             },
-            prepare: function () {
+            prepare: function() {
                 this.setContent(this.message);
                 this.elements.footer.style.visibility = "hidden";
             },
             hooks: {
-                onshow: function () {
+                onshow: function() {
                     this.elements.dialog.style.maxWidth = 'none';
                     this.elements.dialog.style.width = '40%';
                 },
-                onclose: function () {
+                onclose: function() {
                     alertify.dialog.closeAll;
 
                 }
@@ -754,15 +803,15 @@ function popupEditDx(id) {
     } else {
         $('span#editDx').text('แก้ไขวินิจฉัย');
     }
-    alertify.genericDialog1327195 || alertify.dialog('genericDialog1327195', function () {
+    alertify.genericDialog1327195 || alertify.dialog('genericDialog1327195', function() {
         return {
-            main: function (content) {
+            main: function(content) {
                 this.setContent(content);
             },
-            setup: function () {
+            setup: function() {
                 return {
                     focus: {
-                        element: function () {
+                        element: function() {
                             return this.elements.body.querySelector(this.get('selector'));
                         },
                         select: true
@@ -789,16 +838,16 @@ function popupEditDx(id) {
                     }
                 };
             },
-            prepare: function () {
+            prepare: function() {
                 this.setContent(this.message);
                 this.elements.footer.style.visibility = "hidden";
             },
             hooks: {
-                onshow: function () {
+                onshow: function() {
                     this.elements.dialog.style.maxWidth = 'none';
                     this.elements.dialog.style.width = '40%';
                 },
-                onclose: function () {
+                onclose: function() {
                     alertify.dialog.closeAll;
 
                 }
@@ -826,15 +875,15 @@ function popupEditProc(id) {
     $('#editProc').removeClass('stopDisplay');
     $('#editProc').addClass('display');
     //dialogshow();
-    alertify.genericDialog0 || alertify.dialog('genericDialog0', function () {
+    alertify.genericDialog0 || alertify.dialog('genericDialog0', function() {
         return {
-            main: function (content) {
+            main: function(content) {
                 this.setContent(content);
             },
-            setup: function () {
+            setup: function() {
                 return {
                     focus: {
-                        element: function () {
+                        element: function() {
                             return this.elements.body.querySelector(this.get('selector'));
                         },
                         select: true
@@ -861,16 +910,16 @@ function popupEditProc(id) {
                     }
                 };
             },
-            prepare: function () {
+            prepare: function() {
                 this.setContent(this.message);
                 this.elements.footer.style.visibility = "hidden";
             },
             hooks: {
-                onshow: function () {
+                onshow: function() {
                     this.elements.dialog.style.maxWidth = 'none';
                     this.elements.dialog.style.width = '40%';
                 },
-                onclose: function () {
+                onclose: function() {
                     this.close;
                 }
             },
@@ -890,55 +939,55 @@ function popupEditProc(id) {
 function popupSummaryData(evt) {
     alertify.closeAll();
     var evt = evt;
-   
-     var dateVisit = $('span#dateshow').html();    
+
+    var dateVisit = $('span#dateshow').html();
     $('span#dateVisit').text(dateVisit);
-   
-    var datainform =  $('div#general_inform').html();
+
+    var datainform = $('div#general_inform').html();
     $('div#inform_data').html(datainform);
     var dataScreen = $('div#screening_data').html();
     $('div#chief_complain').html(dataScreen);
-   //use callback funntion to await this funciton complete theb next step
-   getDxPeOpdData(function() {    
+    //use callback funntion to await this funciton complete theb next step
+    getDxPeOpdData(function() {
         $('div#dx_pe_opd').html(dx_opd_pe_data);
-    }); 
-    
-    getDrugOpd(function(){
+    });
+
+    getDrugOpd(function() {
         var dataDrug = $('div#drug_used').html();
         $('div#modal_drug_opd').html(dataDrug);
     });
 
-    getLab(function(){
+    getLab(function() {
         var dataLab = $('div#my_opd_lab').html();
         $('div#modal_lab_opd').html(dataLab);
     });
 
-   
-    getXray(function(){
+
+    getXray(function() {
         var dataXray = $('div#xray_result').html();
         $('div#modal_xray_opd').html(dataXray);
     });
 
-    getCost(function(){
+    getCost(function() {
         var dataCost = $('div#cost_result').html();
         $('div#modal_cost_opd').html(dataCost);
     });
-     
-    if(evt=='show'){    
+
+    if (evt == 'show') {
         $('#summary').removeClass('stopDisplay');
         $('#summary').addClass('display');
     }
-    
+
     //dialogshow();
-    alertify.genericDialog0 || alertify.dialog('genericDialog0', function () {
+    alertify.genericDialog0 || alertify.dialog('genericDialog0', function() {
             return {
-                main: function (content) {
+                main: function(content) {
                     this.setContent(content);
                 },
-                setup: function () {
+                setup: function() {
                     return {
                         focus: {
-                            element: function () {
+                            element: function() {
                                 return this.elements.body.querySelector(this.get('selector'));
                             },
                             select: true
@@ -965,16 +1014,16 @@ function popupSummaryData(evt) {
                         }
                     };
                 },
-                prepare: function () {
+                prepare: function() {
                     this.setContent(this.message);
                     this.elements.footer.style.visibility = "hidden";
                 },
                 hooks: {
-                    onshow: function () {
+                    onshow: function() {
                         this.elements.dialog.style.maxWidth = 'none';
                         this.elements.dialog.style.width = '80%';
                     },
-                    onclose: function () {
+                    onclose: function() {
                         this.close;
                     }
                 },
@@ -985,7 +1034,7 @@ function popupSummaryData(evt) {
                 }
             };
         }
-       
+
     );
     //force focusing password box
 
@@ -1002,8 +1051,8 @@ function set_icd10name(val) {
         //alert(cln);
         $.getJSON('get_icd10name.php', {
             icd10: icd10
-        }, function (data) {
-            $.each(data, function (key, value) {
+        }, function(data) {
+            $.each(data, function(key, value) {
                 $('#icd10name').val(value.icd10name);
             });
         });
@@ -1020,8 +1069,8 @@ function set_icd9ttmname(val) {
         $.getJSON('get_icd9ttmname.php', {
             'icd9ttm': icd9ttm,
             'clinic': clinic
-        }, function (data) {
-            $.each(data, function (key, value) {
+        }, function(data) {
+            $.each(data, function(key, value) {
 
 
                 //                $('#icd9ttmname').val(value.nameicd9);
@@ -1050,10 +1099,11 @@ function setProc(valRadio) {
     $('input#icd9price').val(valRadio.value);
 
 }
-function printPrb(){
+
+function printPrb() {
     var hn = $("input#hn").val();
-    var visit_date = history_vstdate_global.substring(0,19);
+    var visit_date = history_vstdate_global.substring(0, 19);
     //alert(visit_date);
 
-    window.open('printDoc/viewprb.php?adate='+visit_date+'&hn='+hn) ;
+    window.open('printDoc/viewprb.php?adate=' + visit_date + '&hn=' + hn);
 }

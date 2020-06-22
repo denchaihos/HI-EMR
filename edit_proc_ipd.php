@@ -13,7 +13,7 @@ $sql = "select id from tsu_ioprt_original where id=$id_dx";
 $result = mysql_query($sql);
 
 if (mysql_num_rows($result) == 0) {
-    $sql = "INSERT INTO tsu_ioprt_original (id,an,hn,date,time,dct,orno,icd9cm,icd9name,optype,charge,rcptno,codeicd9id,date_update,flag_status)
+    $sql = "INSERT INTO tsu_ioprt_original (id,an,hn,date,time,dct,orno,icd9cm,icd9name,optype,charge,rcptno,codeicd9id,oppnote,qty,date_update,flag_status)
             SELECT *,now(),'up' from ioprt where id=$id_dx";
     $result = mysql_query($sql);
     if($result)

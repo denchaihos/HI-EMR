@@ -43,7 +43,7 @@ LEFT JOIN dtdx dx on dx.dn=d.dn
 LEFT JOIN icdda i on i.codeicdda=dx.icdda
 LEFT JOIN cdt2 c on c.codecdt2=dx.dttx
 LEFT JOIN areacode a on a.codearea=dx.area
-where d.vn=$vn";
+where d.vn=$vn GROUP BY dx.id";
 $result = mysql_query($sql, $con);
 if (mysql_num_rows($result)>0) {
     $data .= "<h5>การให้การรักษา</h5>";

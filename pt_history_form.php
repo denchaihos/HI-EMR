@@ -19,15 +19,15 @@
 <body>
 
     <?
-    date_default_timezone_set('Asia/Bangkok');
-    include "myFunction/myFunction.php";
+date_default_timezone_set('Asia/Bangkok');
+include "myFunction/myFunction.php";
 
-    $today = time();
-    //$hn = $_GET['hn'];
-    $hn = 1;
-    //$vn = $hn[1];
-    include "modal_data.php";
-    ?>   
+$today = time();
+//$hn = $_GET['hn'];
+$hn = 1;
+//$vn = $hn[1];
+include "modal_data.php";
+?>
 
     <div class="col-lg-12" id="main_div">
         <div class="panel panel-primary">
@@ -41,16 +41,17 @@
                     <button type="button" class="btn btn-default" onclick="getVstdate();getPtInform();">ตกลง</button>
                     <!-- <button type="button" class="btn btn-default" onclick="getInform_Data()">พิมพ์</button> -->
                     <button type="button" class="btn btn-default" onclick="popupSummaryData('show')">พิมพ์ประวัติ</button>
+                    <a id="printopd" href="" target="_blank"> <button type="button" class="btn btn-default" >พิมพ์ OPD CARD</button></a>
                     <button type="button" class="btn btn-default" onclick="printPrb()">พิมพ์ค่าใช้จ่าย</button>
-                   
-                    
+
+
 
                         <span style="display: none"> วันที่  <input type="hidden" name="vstdate_fromclick" id="vstdate_fromclick" value=""/></span>
                         <span style="display: none" id="dateshow"></span>
                     <input type="button" style="display: none" onclick="printDiv('printableArea')" value="print Send TestLab!" />
 
                 </form>
-                <input type="hidden" name="hn" id="hnn" value="<? echo $hn ?>"/>
+                <input type="hidden" name="hn" id="hnn" value="<?echo $hn ?>"/>
             </div>
             <div class="panel-body">
                 <div class="col-lg-12" id="main_content">
@@ -175,17 +176,17 @@
                                                         <div class="col-md-12 table-curved">
                                                             <table class="table  col-md-10 table-hover table-striped" id="mydrugs">
                                                                 <?php
-                                                                echo '<thead class="mythead">';
-                                                                echo '<tr>';
-                                                                echo '<th class="mythead">ลำดับ</th>';
-                                                                echo '<th >ชื่อยา</th>';
-                                                                echo '<th>จำนวน</th>';
-                                                                echo '<th>ราคาต่อหน่วย</th>';
-                                                                echo '<th>จำนวนเงิน</th>';
-                                                                echo '<th>วิธีกิน</th>';
-                                                                echo '</tr>';
-                                                                echo '</thead>';
-                                                                ?>
+echo '<thead class="mythead">';
+echo '<tr>';
+echo '<th class="mythead">ลำดับ</th>';
+echo '<th >ชื่อยา</th>';
+echo '<th>จำนวน</th>';
+echo '<th>ราคาต่อหน่วย</th>';
+echo '<th>จำนวนเงิน</th>';
+echo '<th>วิธีกิน</th>';
+echo '</tr>';
+echo '</thead>';
+?>
                                                                 <tbody id="my_drugs">
 
                                                                 </tbody>

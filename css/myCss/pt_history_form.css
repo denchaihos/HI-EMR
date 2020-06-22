@@ -212,8 +212,8 @@ span.badge{
 .editDx,.editProc{
     padding-bottom: 1px;
     padding-top: 1px;
-    padding-right: 2px;
-    padding-left: 2px;
+    padding-right: 4px;
+    padding-left: 4px;
     text-align: center;
-    width: 50px;
+   width: 80px;
 }

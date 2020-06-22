@@ -3,6 +3,7 @@
  */
 /***************IPD****************/
 function getIpdData() {
+    ptType_global_var = 'ipd';
     $('button#saveEditDx').attr('onClick', "updateDx('ipd')");
     $('button#saveEditProc').attr('onClick', "updateProc('ipd')");
     var vn = vn_global_var;
